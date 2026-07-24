@@ -1,0 +1,554 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:"Poppins",sans-serif;
+}
+
+body{
+    background:#f5f7fb;
+}
+
+/* ===========================
+   Dashboard Layout
+=========================== */
+
+.dashboard-page{
+    min-height:100vh;
+    background:#f5f7fb;
+    padding:30px;
+}
+
+.dashboard-container{
+    width:100%;
+    max-width:1400px;
+    margin:0 auto;
+}
+
+/* ===========================
+   Dashboard Header
+=========================== */
+
+.dashboard-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    margin-bottom:20px;
+}
+
+.dashboard-header h1{
+    color:#1e40af;
+    font-size:32px;
+    font-weight:700;
+    margin:0;
+    line-height:1.2;
+}
+
+.dashboard-header p{
+    margin:0;
+    color:#6b7280;
+    font-size:16px;
+    font-weight:400;
+    line-height:1.5;
+}
+
+.header-right{
+    background:#ffffff;
+    padding:12px 22px;
+    border-radius:14px;
+    box-shadow:0 8px 20px rgba(0,0,0,.08);
+    color:#2563eb;
+    font-weight:600;
+}
+
+/* ===========================
+   KPI Cards
+=========================== */
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:25px;
+    margin-bottom:30px;
+}
+
+.card{
+    background:#ffffff;
+    border-radius:18px;
+    padding:35px 20px;
+    text-align:center;
+    position:relative;
+    overflow:hidden;
+    box-shadow:0 10px 25px rgba(0,0,0,.08);
+    transition:.3s;
+}
+
+.card:hover{
+    transform:translateY(-4px);
+    box-shadow:0 15px 30px rgba(0,0,0,.12);
+}
+
+.card::before{
+    content:"";
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:6px;
+    background:linear-gradient(90deg,#2563eb,#3b82f6);
+}
+
+.card-icon{
+    width:60px;
+    height:60px;
+    margin:0 auto 20px;
+    border-radius:50%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    color:#ffffff;
+    font-size:26px;
+    transition:.3s;
+}
+
+.card:hover .card-icon{
+    transform:scale(1.08);
+}
+
+.green{
+    background:#10b981;
+}
+
+.blue{
+    background:#2563eb;
+}
+
+.orange{
+    background:#f59e0b;
+}
+
+.red{
+    background:#ef4444;
+}
+
+.card h2{
+    font-size:42px;
+    color:#2563eb;
+    margin-bottom:10px;
+    font-weight:700;
+}
+
+.card p{
+    font-size:18px;
+    color:#64748b;
+}
+
+/* ===========================
+   Chart Section
+=========================== */
+
+.chart-grid{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:25px;
+    margin-bottom:20px;
+}
+
+.chart-card{
+    background:#ffffff;
+    border-radius:18px;
+    padding:28px;
+    box-shadow:0 8px 20px rgba(0,0,0,.08);
+}
+
+.card-title{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:20px;
+}
+
+.card-title h2{
+    font-size:32px;
+    font-weight:700;
+    color:#1e40af;
+}
+
+.card-title svg{
+    font-size:24px;
+    color:#2563eb;
+}
+
+/* ===========================
+   Recharts
+=========================== */
+
+.recharts-wrapper{
+    margin:auto;
+}
+
+.recharts-default-legend{
+    margin-top:10px !important;
+}
+
+.recharts-tooltip-wrapper{
+    border-radius:10px;
+}
+
+.recharts-surface{
+    outline:none;
+}
+/* ===========================
+   Table Section
+=========================== */
+
+.table-card{
+    background:#ffffff;
+    border-radius:18px;
+    padding:28px;
+    margin-top:20px;
+    margin-bottom:20px;
+    box-shadow:0 8px 20px rgba(0,0,0,.08);
+    overflow-x:auto;
+    transition:.3s;
+}
+
+.table-card:hover{
+    box-shadow:0 15px 30px rgba(0,0,0,.12);
+}
+
+.table-card h2{
+    font-size:32px;
+    font-weight:700;
+    color:#1e40af;
+    margin-bottom:20px;
+    line-height:1.2;
+}
+
+.dashboard-table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+.dashboard-table thead{
+    background:#2563eb;
+}
+
+.dashboard-table th{
+    color:#ffffff;
+    padding:16px;
+    text-align:left;
+    font-size:16px;
+    font-weight:600;
+}
+
+.dashboard-table td{
+    padding:16px;
+    border-bottom:1px solid #e5e7eb;
+    color:#374151;
+    font-size:16px;
+}
+
+.dashboard-table tbody tr:nth-child(even){
+    background:#f9fafb;
+}
+
+.dashboard-table tbody tr:hover{
+    background:#f8fbff;
+}
+
+.dashboard-table th:first-child{
+    border-radius:10px 0 0 0;
+}
+
+.dashboard-table th:last-child{
+    border-radius:0 10px 0 0;
+}
+
+/* ===========================
+   Status Badges
+=========================== */
+
+.status{
+    display:inline-block;
+    padding:8px 18px;
+    border-radius:25px;
+    font-size:14px;
+    font-weight:600;
+    min-width:110px;
+    text-align:center;
+}
+
+.available{
+    background:#10b981;
+    color:#ffffff;
+}
+
+.assigned{
+    background:#2563eb;
+    color:#ffffff;
+}
+
+.maintenance{
+    background:#f59e0b;
+    color:#ffffff;
+}
+
+.disposed{
+    background:#ef4444;
+    color:#ffffff;
+}
+
+/* ===========================
+   Warranty Badges
+=========================== */
+
+.warning-badge{
+    display:inline-block;
+    background:#f59e0b;
+    color:#ffffff;
+    padding:8px 16px;
+    border-radius:25px;
+    font-size:14px;
+    font-weight:600;
+}
+
+.danger-badge{
+    display:inline-block;
+    background:#ef4444;
+    color:#ffffff;
+    padding:8px 16px;
+    border-radius:25px;
+    font-size:14px;
+    font-weight:600;
+}
+
+/* ===========================
+   Table Scroll
+=========================== */
+
+.table-card::-webkit-scrollbar{
+    height:8px;
+}
+
+.table-card::-webkit-scrollbar-track{
+    background:#edf2f7;
+    border-radius:20px;
+}
+
+.table-card::-webkit-scrollbar-thumb{
+    background:#cbd5e1;
+    border-radius:20px;
+}
+/* ===========================
+   Recent Activity
+=========================== */
+
+.activity-card{
+    background:#ffffff;
+    border-radius:18px;
+    padding:28px;
+    margin-top:20px;
+    margin-bottom:30px;
+    box-shadow:0 8px 20px rgba(0,0,0,.08);
+    transition:.3s;
+}
+
+.activity-card:hover{
+    box-shadow:0 15px 30px rgba(0,0,0,.12);
+}
+
+.activity-card h2{
+    font-size:32px;
+    font-weight:700;
+    color:#1e40af;
+    margin-bottom:20px;
+    line-height:1.2;
+}
+
+.activity-list{
+    display:flex;
+    flex-direction:column;
+    gap:18px;
+}
+
+.activity-item{
+    display:flex;
+    align-items:center;
+    gap:18px;
+    padding:20px;
+    border:1px solid #e5e7eb;
+    border-radius:16px;
+    transition:.3s;
+}
+
+.activity-item:hover{
+    background:#f8fbff;
+    transform:translateY(-3px);
+}
+
+.activity-icon{
+    width:55px;
+    height:55px;
+    border-radius:50%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    color:#ffffff;
+    font-size:22px;
+    flex-shrink:0;
+}
+
+.blue-bg{
+    background:#2563eb;
+}
+
+.green-bg{
+    background:#10b981;
+}
+
+.orange-bg{
+    background:#f59e0b;
+}
+
+.red-bg{
+    background:#ef4444;
+}
+
+.activity-content{
+    flex:1;
+}
+
+.activity-content h4{
+    font-size:18px;
+    font-weight:600;
+    color:#1f2937;
+    margin-bottom:5px;
+}
+
+.activity-content p{
+    font-size:15px;
+    color:#6b7280;
+}
+
+.activity-time{
+    font-size:14px;
+    color:#9ca3af;
+    font-weight:600;
+}
+
+/* ===========================
+   Animation
+=========================== */
+
+.card,
+.chart-card,
+.table-card,
+.activity-card{
+    animation:fadeUp .4s ease;
+}
+
+@keyframes fadeUp{
+
+    from{
+        opacity:0;
+        transform:translateY(20px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+
+}
+
+/* ===========================
+   Responsive
+=========================== */
+
+@media(max-width:1200px){
+
+    .cards{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .chart-grid{
+        grid-template-columns:1fr;
+    }
+
+}
+
+@media(max-width:768px){
+
+    .dashboard-page{
+        padding:20px;
+    }
+
+    .dashboard-header{
+        flex-direction:column;
+        align-items:flex-start;
+        gap:10px;
+    }
+
+    .dashboard-header h1{
+        font-size:32px;
+    }
+
+    .dashboard-header p{
+        font-size:16px;
+    }
+
+    .cards{
+        grid-template-columns:1fr;
+    }
+
+    .table-card{
+        overflow-x:auto;
+    }
+
+    .dashboard-table{
+        min-width:700px;
+    }
+
+    .activity-item{
+        flex-direction:column;
+        align-items:flex-start;
+    }
+
+}
+
+@media(max-width:480px){
+
+    .card{
+        padding:25px;
+    }
+
+    .card h2{
+        font-size:36px;
+    }
+
+    .card p{
+        font-size:15px;
+    }
+
+    .dashboard-header h1{
+        font-size:28px;
+    }
+
+    .dashboard-header p{
+        font-size:15px;
+    }
+
+    .table-card,
+    .chart-card,
+    .activity-card{
+        padding:20px;
+    }
+
+    .dashboard-table th,
+    .dashboard-table td{
+        padding:12px;
+        font-size:14px;
+    }
+
+}

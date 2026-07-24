@@ -1,0 +1,294 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:"Poppins",sans-serif;
+}
+
+body{
+    background:#f5f7fb;
+}
+
+/* ================= Login Container ================= */
+
+.login-container{
+    width:100%;
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:30px;
+    background:linear-gradient(135deg,#2563eb,#1e40af);
+}
+
+/* ================= Login Card ================= */
+
+.login-box{
+    width:100%;
+    max-width:620px;
+    background:#ffffff;
+    padding:50px;
+    border-radius:22px;
+    box-shadow:0 18px 45px rgba(0,0,0,.15);
+}
+
+/* ================= Logo ================= */
+
+.logo{
+    text-align:center;
+    font-size:38px;
+    font-weight:700;
+    color:#111827;
+    margin-bottom:10px;
+}
+
+/* ================= Subtitle ================= */
+
+.subtitle{
+    text-align:center;
+    font-size:18px;
+    color:#6b7280;
+    margin-bottom:35px;
+}
+/* ================= Role Selection ================= */
+
+.role-box{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:70px;
+    margin-bottom:35px;
+}
+
+.role-box label{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    cursor:pointer;
+    font-size:17px;
+    font-weight:600;
+    color:#1f2937;
+    transition:.3s;
+}
+
+/* Hide Default Radio */
+
+.role-box input[type="radio"]{
+    appearance:none;
+    -webkit-appearance:none;
+    width:22px;
+    height:22px;
+    border:2px solid #9ca3af;
+    border-radius:50%;
+    background:#ffffff;
+    cursor:pointer;
+    position:relative;
+    transition:.3s ease;
+}
+
+/* Hover */
+
+.role-box input[type="radio"]:hover{
+    border-color:#2563eb;
+}
+
+/* Checked */
+
+.role-box input[type="radio"]:checked{
+    border-color:#2563eb;
+    background:#ffffff;
+}
+
+/* Inner Blue Dot */
+
+.role-box input[type="radio"]:checked::before{
+    content:"";
+    position:absolute;
+    width:10px;
+    height:10px;
+    background:#2563eb;
+    border-radius:50%;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+}
+
+/* Label Hover */
+
+.role-box label:hover{
+    color:#2563eb;
+}
+/* ================= Form ================= */
+
+.login-box form{
+    display:flex;
+    flex-direction:column;
+}
+
+.login-box input[type="email"],
+.login-box input[type="password"]{
+    width:100%;
+    padding:16px 18px;
+    margin-bottom:20px;
+    border:1px solid #d1d5db;
+    border-radius:12px;
+    font-size:16px;
+    color:#111827;
+    background:#ffffff;
+    outline:none;
+    transition:all .3s ease;
+}
+
+.login-box input[type="email"]:focus,
+.login-box input[type="password"]:focus{
+    border-color:#2563eb;
+    box-shadow:0 0 0 4px rgba(37,99,235,.15);
+}
+
+.login-box input::placeholder{
+    color:#9ca3af;
+}
+
+/* ================= Error ================= */
+
+.error{
+    color:#ef4444;
+    text-align:center;
+    font-size:15px;
+    font-weight:500;
+    margin-bottom:18px;
+}
+
+/* ================= Login Button ================= */
+
+.login-box button{
+    width:100%;
+    padding:16px;
+    border:none;
+    border-radius:12px;
+    background:#2563eb;
+    color:#ffffff;
+    font-size:18px;
+    font-weight:600;
+    cursor:pointer;
+    transition:all .3s ease;
+}
+
+.login-box button:hover{
+    background:#1d4ed8;
+    transform:translateY(-2px);
+    box-shadow:0 10px 20px rgba(37,99,235,.25);
+}
+
+.login-box button:active{
+    transform:scale(.98);
+}
+
+/* ================= Register Link ================= */
+
+.register-link{
+    margin-top:22px;
+    text-align:center;
+    color:#6b7280;
+    font-size:16px;
+}
+
+.register-link a{
+    color:#2563eb;
+    text-decoration:none;
+    font-weight:600;
+}
+
+.register-link a:hover{
+    text-decoration:underline;
+}
+
+/* ================= Responsive ================= */
+
+@media(max-width:768px){
+
+    .login-container{
+        padding:20px;
+    }
+
+    .login-box{
+        max-width:100%;
+        padding:35px 25px;
+    }
+
+    .logo{
+        font-size:30px;
+    }
+
+    .subtitle{
+        font-size:16px;
+        margin-bottom:28px;
+    }
+
+    .role-box{
+        gap:35px;
+        margin-bottom:28px;
+    }
+
+    .role-box label{
+        font-size:16px;
+    }
+
+    .role-box input[type="radio"]{
+        width:20px;
+        height:20px;
+    }
+
+    .role-box input[type="radio"]:checked::before{
+        width:9px;
+        height:9px;
+    }
+
+    .login-box input[type="email"],
+    .login-box input[type="password"]{
+        padding:14px 16px;
+        font-size:15px;
+    }
+
+    .login-box button{
+        font-size:17px;
+        padding:15px;
+    }
+}
+
+@media(max-width:480px){
+
+    .login-box{
+        padding:30px 20px;
+    }
+
+    .logo{
+        font-size:26px;
+    }
+
+    .subtitle{
+        font-size:15px;
+    }
+
+    .role-box{
+        gap:25px;
+        flex-wrap:wrap;
+    }
+
+    .role-box label{
+        font-size:15px;
+    }
+
+    .login-box input[type="email"],
+    .login-box input[type="password"]{
+        font-size:14px;
+    }
+
+    .login-box button{
+        font-size:16px;
+    }
+
+    .register-link{
+        font-size:15px;
+    }
+}

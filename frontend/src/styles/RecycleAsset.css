@@ -1,0 +1,242 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+/* ================= Page ================= */
+
+.recycle-page{
+    min-height:100vh;
+    background:#f4f7fc;
+    display:flex;
+    justify-content:center;
+    align-items:flex-start;
+    padding:40px 20px;
+}
+
+/* ================= Card ================= */
+
+.recycle-box{
+    width:100%;
+    max-width:760px;
+    background:#fff;
+    border-radius:18px;
+    padding:35px;
+    box-shadow:0 10px 25px rgba(0,0,0,.08);
+    animation:fadeIn .4s ease;
+}
+
+.recycle-box h2{
+    color:#2563eb;
+    text-align:center;
+    margin-bottom:25px;
+    font-size:30px;
+    font-weight:700;
+}
+
+.recycle-box p{
+    color:#475569;
+    font-size:16px;
+    margin-bottom:15px;
+    line-height:1.6;
+}
+
+.recycle-box strong{
+    color:#111827;
+}
+
+/* ================= Asset Details ================= */
+
+.asset-details{
+    background:#f8fafc;
+    border:1px solid #e5e7eb;
+    border-radius:12px;
+    padding:18px;
+    margin:20px 0;
+}
+
+.asset-details p{
+    margin:10px 0;
+    font-size:15px;
+}
+/* ================= Form ================= */
+
+.form-group{
+    margin-bottom:22px;
+}
+
+.form-group label{
+    display:block;
+    margin-bottom:8px;
+    font-size:15px;
+    font-weight:600;
+    color:#6b7280;
+}
+
+.form-group select,
+.form-group textarea{
+    width:100%;
+    padding:12px 15px;
+    border:1px solid #d1d5db;
+    border-radius:10px;
+    outline:none;
+    font-size:15px;
+    color:#374151;
+    background:#fff;
+    transition:.3s;
+}
+
+.form-group select:focus,
+.form-group textarea:focus{
+    border-color:#2563eb;
+    box-shadow:0 0 0 3px rgba(37,99,235,.15);
+}
+
+.form-group textarea{
+    resize:none;
+    min-height:110px;
+    line-height:1.6;
+}
+
+
+.form-group select:invalid{
+    color:#9ca3af;
+}
+
+.form-group option{
+    color:#111827;
+}
+
+.form-group textarea::placeholder{
+    color:#9ca3af;
+}
+/* ================= Buttons ================= */
+
+.btn-group{
+    display:flex;
+    justify-content:center;
+    gap:15px;
+    margin-top:30px;
+}
+
+.yes-btn,
+.cancel-btn{
+    padding:12px 28px;
+    border:none;
+    border-radius:10px;
+    font-size:15px;
+    font-weight:600;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.yes-btn{
+    background:#16a34a;
+    color:#fff;
+}
+
+.yes-btn:hover{
+    background:#15803d;
+    transform:translateY(-2px);
+}
+
+.cancel-btn{
+    background:#ef4444;
+    color:#fff;
+}
+
+.cancel-btn:hover{
+    background:#dc2626;
+    transform:translateY(-2px);
+}
+/* ================= Responsive ================= */
+
+@media(max-width:768px){
+
+    .recycle-page{
+        padding:20px;
+    }
+
+    .recycle-box{
+        padding:25px;
+    }
+
+    .recycle-box h2{
+        font-size:26px;
+    }
+
+    .recycle-box p{
+        font-size:14px;
+    }
+
+    .asset-details{
+        padding:15px;
+    }
+
+    .asset-details p{
+        font-size:14px;
+    }
+
+    .form-group label{
+        font-size:14px;
+    }
+
+    .form-group select,
+    .form-group textarea{
+        font-size:14px;
+        padding:10px 12px;
+    }
+
+    .btn-group{
+        flex-direction:column;
+    }
+
+    .yes-btn,
+    .cancel-btn{
+        width:100%;
+    }
+
+}
+
+@media(max-width:480px){
+
+    .recycle-box{
+        padding:20px;
+        border-radius:14px;
+    }
+
+    .recycle-box h2{
+        font-size:22px;
+    }
+
+    .recycle-box p{
+        font-size:13px;
+    }
+
+    .asset-details p{
+        font-size:13px;
+    }
+
+}
+
+/* ================= Animation ================= */
+
+.recycle-box{
+    animation:fadeIn .4s ease-in-out;
+}
+
+@keyframes fadeIn{
+
+    from{
+        opacity:0;
+        transform:translateY(20px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+
+}

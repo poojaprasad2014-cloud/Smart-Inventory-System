@@ -1,0 +1,221 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:"Poppins",sans-serif;
+}
+
+body{
+    background:#f5f7fb;
+}
+
+/* ================= Page ================= */
+
+.employee-dashboard-page{
+    width:100%;
+    min-height:100vh;
+    background:#f5f7fb;
+    padding:30px;
+}
+
+.employee-dashboard-container{
+    width:100%;
+    max-width:1400px;
+    margin:0 auto;
+}
+
+/* ================= Main Content ================= */
+
+.employee-main-content{
+    width:100%;
+}
+
+/* ================= Topbar ================= */
+
+.employee-topbar{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    margin-bottom:25px;
+}
+
+.employee-topbar h1{
+    color:#1e40af;
+    font-size:32px;
+    font-weight:700;
+    margin:0;
+    line-height:1.2;
+}
+
+.employee-topbar p{
+    margin-top:4px;
+    color:#6b7280;
+    font-size:16px;
+    font-weight:400;
+}
+
+.header-right{
+    background:#ffffff;
+    padding:12px 22px;
+    border-radius:14px;
+    box-shadow:0 8px 20px rgba(0,0,0,.08);
+    color:#2563eb;
+    font-size:18px;
+    font-weight:600;
+}
+/* ================= Cards ================= */
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:25px;
+    margin-bottom:35px;
+}
+
+.card{
+    background:#fff;
+    border-radius:18px;
+    padding:40px 20px;
+    text-align:center;
+    box-shadow:0 10px 25px rgba(0,0,0,.08);
+    transition:.3s;
+}
+
+.card:hover{
+    transform:translateY(-4px);
+    box-shadow:0 15px 30px rgba(0,0,0,.12);
+}
+
+.card h2{
+    font-size:48px;
+    color:#2563eb;
+    margin-bottom:12px;
+}
+
+.card p{
+    font-size:18px;
+    color:#64748b;
+}
+
+/* ================= Table ================= */
+
+.table-box{
+    background:#fff;
+    border-radius:18px;
+    padding:28px;
+    margin-top:30px;
+    margin-bottom:30px;
+    box-shadow:0 8px 20px rgba(0,0,0,.08);
+}
+
+.table-box h2{
+    font-size:32px;
+    font-weight:700;
+    color:#1e40af;
+    margin-bottom:20px;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+thead{
+    background:#2563eb;
+}
+
+thead th{
+    color:#fff;
+    padding:16px;
+    text-align:left;
+    font-size:16px;
+    font-weight:600;
+}
+
+tbody td{
+    padding:16px;
+    border-bottom:1px solid #e5e7eb;
+    color:#374151;
+}
+
+tbody tr:hover{
+    background:#f8fbff;
+}
+/* ================= Status ================= */
+
+.available,
+.assigned,
+.maintenance{
+    display:inline-block;
+    min-width:110px;
+    padding:8px 18px;
+    border-radius:25px;
+    color:#fff;
+    text-align:center;
+    font-size:14px;
+    font-weight:600;
+}
+
+.available{
+    background:#10b981;
+}
+
+.assigned{
+    background:#2563eb;
+}
+
+.maintenance{
+    background:#f59e0b;
+}
+
+/* ================= Responsive ================= */
+
+@media(max-width:768px){
+
+    .employee-dashboard-page{
+        padding:20px;
+    }
+
+    .employee-topbar{
+        flex-direction:column;
+        gap:20px;
+    }
+
+    .cards{
+        grid-template-columns:1fr;
+    }
+
+    .table-box{
+        overflow-x:auto;
+    }
+
+    table{
+        min-width:700px;
+    }
+}
+
+@media(max-width:480px){
+
+    .card{
+        padding:25px;
+    }
+
+    .card h2{
+        font-size:36px;
+    }
+
+    .card p{
+        font-size:15px;
+    }
+
+    th,
+    td{
+        padding:12px;
+        font-size:14px;
+    }
+
+    .header-right span{
+        font-size:16px;
+        padding:10px 20px;
+    }
+}
