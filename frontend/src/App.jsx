@@ -101,7 +101,7 @@ function App() {
         path="/employee-dashboard"
         element={<EmployeeDashboard />}
       />
-      <Route path="/my-assets" element={<MyAssets />} />+e---
+      <Route path="/my-assets" element={<MyAssets />} />
       <Route path="/raise-complaint" element={<RaiseComplaint />} />
       <Route path="/my-complaints" element={<MyComplaints />} />
       <Route path="/my-profile" element={<MyProfile />} />

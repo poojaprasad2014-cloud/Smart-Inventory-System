@@ -24,10 +24,19 @@ function EditAsset() {
     status: "Available",
   });
 
+  // useEffect(() => {
+  //   loadCategories();
+  //   loadAsset();
+  // }, [id]);
+
+
   useEffect(() => {
-    loadCategories();
-    loadAsset();
-  }, [id]);
+  console.log("EditAsset mounted");
+  console.log("Current ID:", id);
+
+  loadCategories();
+  loadAsset();
+}, [id]);
 
   const loadCategories = async () => {
 
