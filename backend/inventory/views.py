@@ -68,9 +68,9 @@ class AssetAssignmentViewSet(viewsets.ModelViewSet):
 # Maintenance
 # ==========================
 class MaintenanceViewSet(viewsets.ModelViewSet):
-    queryset = Maintenance.objects.all().order_by("-id")
+    queryset = Maintenance.objects.all()
     serializer_class = MaintenanceSerializer
-
+    
     def get_queryset(self):
         queryset = super().get_queryset()
 
@@ -146,6 +146,7 @@ def warranty_alert(request):
             "id": asset.id,
             "asset_id": asset.asset_id,
             "asset_name": asset.asset_name,
+            "category_name": asset.category.category_name,
             "brand": asset.brand,
             "warranty_expiry": asset.warranty_expiry,
             "days_left": (asset.warranty_expiry - today).days

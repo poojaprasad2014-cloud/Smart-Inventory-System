@@ -1,12 +1,11 @@
 import { useState, useEffect } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import axios from "axios";
 import "../styles/EditAssignment.css";
 
 function EditAssignment() {
 
   const { id } = useParams();
-  const navigate = useNavigate();
 
   const [assets, setAssets] = useState([]);
   const [employees, setEmployees] = useState([]);
@@ -20,10 +19,9 @@ function EditAssignment() {
 
   useEffect(() => {
     fetchData();
-  }, []);
+  }, [id]);
 
   const fetchData = async () => {
-
     try {
 
       const assetResponse = await axios.get(
@@ -54,20 +52,16 @@ function EditAssignment() {
       alert("Failed to Load Assignment");
 
     }
-
   };
 
   const handleChange = (e) => {
-
-    setFormData({
-      ...formData,
+    setFormData((prev) => ({
+      ...prev,
       [e.target.name]: e.target.value,
-    });
-
+    }));
   };
 
   const handleSubmit = async (e) => {
-
     e.preventDefault();
 
     try {
@@ -79,7 +73,8 @@ function EditAssignment() {
 
       alert("Assignment Updated Successfully");
 
-      navigate("/assignments");
+      // Temporary test
+      window.location.href = "/assignments";
 
     } catch (error) {
 
@@ -87,61 +82,43 @@ function EditAssignment() {
       alert("Update Failed");
 
     }
-
   };
 
   return (
-
     <div className="form-container">
 
       <h1>Edit Asset Assignment</h1>
 
       <form onSubmit={handleSubmit}>
 
-       
-
         <select
           name="asset"
-          value={formData.asset}
+          value={formData.asset || ""}
           onChange={handleChange}
           required
         >
-
           <option value="">Select Asset</option>
 
           {assets.map((item) => (
-
-            <option
-              key={item.id}
-              value={item.id}
-            >
+            <option key={item.id} value={item.id}>
               {item.asset_name}
             </option>
-
           ))}
-
         </select>
 
         <select
           name="employee"
-          value={formData.employee}
+          value={formData.employee || ""}
           onChange={handleChange}
           required
         >
-
           <option value="">Select Employee</option>
 
           {employees.map((item) => (
-
-            <option
-              key={item.id}
-              value={item.id}
-            >
+            <option key={item.id} value={item.id}>
               {item.employee_name}
             </option>
-
           ))}
-
         </select>
 
         <label>Assigned Date</label>
@@ -149,7 +126,7 @@ function EditAssignment() {
         <input
           type="date"
           name="assigned_date"
-          value={formData.assigned_date}
+          value={formData.assigned_date || ""}
           onChange={handleChange}
           required
         />
@@ -159,7 +136,7 @@ function EditAssignment() {
         <input
           type="date"
           name="return_date"
-          value={formData.return_date}
+          value={formData.return_date || ""}
           onChange={handleChange}
         />
 
@@ -170,9 +147,7 @@ function EditAssignment() {
       </form>
 
     </div>
-
   );
-
 }
 
 export default EditAssignment;

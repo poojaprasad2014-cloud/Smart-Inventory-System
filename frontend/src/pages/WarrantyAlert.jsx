@@ -12,6 +12,8 @@ function WarrantyAlert() {
         loadAlerts();
     }, []);
 
+  
+
     const loadAlerts = async () => {
 
         try {
@@ -31,27 +33,24 @@ function WarrantyAlert() {
 
     };
 
+
     const filteredAlerts = alerts.filter((item) => {
 
-        const keyword = search.toLowerCase();
+    const keyword = search.trim().toLowerCase();
 
-        return (
+    if (keyword === "") return true;
 
-            String(item.asset_id || "")
-                .toLowerCase()
-                .includes(keyword) ||
+    const assetId = String(item.asset_id || "").trim().toLowerCase();
+    const assetName = String(item.asset_name || "").trim().toLowerCase();
+    const category = String(item.category_name || "").trim().toLowerCase();
 
-            String(item.asset_name || "")
-                .toLowerCase()
-                .includes(keyword) ||
+    return (
+        assetId.startsWith(keyword) ||
+        assetName.startsWith(keyword) ||
+        category.startsWith(keyword)
+    );
 
-            String(item.brand || "")
-                .toLowerCase()
-                .includes(keyword)
-
-        );
-
-    });
+});
 
     return (
 
@@ -77,14 +76,13 @@ function WarrantyAlert() {
 
                         <input
                             type="text"
-                            placeholder="Search Asset ID, Asset Name or Brand..."
+                            placeholder="Search Asset ID, Asset Name or Category..."
                             value={search}
                             onChange={(e) => setSearch(e.target.value)}
                         />
 
                     </div>
-
-                    <div className="table-box">
+                                        <div className="table-box">
 
                         <table>
 
@@ -94,7 +92,7 @@ function WarrantyAlert() {
 
                                     <th>Asset ID</th>
                                     <th>Asset Name</th>
-                                    <th>Brand</th>
+                                    <th>Category</th>
                                     <th>Warranty Expiry</th>
                                     <th>Days Left</th>
                                     <th>Status</th>
@@ -106,7 +104,8 @@ function WarrantyAlert() {
                             <tbody>
 
                                 {filteredAlerts.length > 0 ? (
-                                                                        filteredAlerts.map((item) => (
+
+                                    filteredAlerts.map((item) => (
 
                                         <tr key={item.id}>
 
@@ -114,7 +113,7 @@ function WarrantyAlert() {
 
                                             <td>{item.asset_name}</td>
 
-                                            <td>{item.brand}</td>
+                                            <td>{item.category_name}</td>
 
                                             <td>{item.warranty_expiry}</td>
 
@@ -153,8 +152,7 @@ function WarrantyAlert() {
                                     ))
 
                                 ) : (
-
-                                    <tr>
+                                                                        <tr>
 
                                         <td
                                             colSpan="6"
@@ -169,6 +167,7 @@ function WarrantyAlert() {
                                     </tr>
 
                                 )}
+
                             </tbody>
 
                         </table>

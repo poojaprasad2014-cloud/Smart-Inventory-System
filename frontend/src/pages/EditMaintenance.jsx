@@ -1,11 +1,10 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import "../styles/EditMaintenance.css";
 
 function EditMaintenance() {
 
-  const navigate = useNavigate();
   const { id } = useParams();
 
   const [assets, setAssets] = useState([]);
@@ -24,12 +23,16 @@ function EditMaintenance() {
     loadAssets();
     loadEmployees();
     loadMaintenance();
-  }, []);
+  }, [id]);
 
   const loadAssets = async () => {
     try {
-      const response = await axios.get("http://127.0.0.1:8000/api/assets/");
+      const response = await axios.get(
+        "http://127.0.0.1:8000/api/assets/"
+      );
+
       setAssets(response.data);
+
     } catch (error) {
       console.log(error);
     }
@@ -37,8 +40,12 @@ function EditMaintenance() {
 
   const loadEmployees = async () => {
     try {
-      const response = await axios.get("http://127.0.0.1:8000/api/employees/");
+      const response = await axios.get(
+        "http://127.0.0.1:8000/api/employees/"
+      );
+
       setEmployees(response.data);
+
     } catch (error) {
       console.log(error);
     }
@@ -46,49 +53,66 @@ function EditMaintenance() {
 
   const loadMaintenance = async () => {
     try {
+
       const response = await axios.get(
         `http://127.0.0.1:8000/api/maintenance/${id}/`
       );
 
       setFormData({
-        asset: response.data.asset,
-        employee: response.data.employee,
-        issue: response.data.issue,
-        reported_date: response.data.reported_date,
+        asset: response.data.asset || "",
+        employee: response.data.employee || "",
+        issue: response.data.issue || "",
+        reported_date: response.data.reported_date || "",
         completed_date: response.data.completed_date || "",
-        status: response.data.status,
+        status: response.data.status || "Pending",
       });
 
     } catch (error) {
+
       console.log(error);
       alert("Failed to Load Maintenance");
+
     }
   };
 
   const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
+
+    const { name, value } = e.target;
+
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+
   };
 
   const handleSubmit = async (e) => {
 
     e.preventDefault();
 
+    const data = {
+      ...formData,
+      completed_date:
+        formData.completed_date === ""
+          ? null
+          : formData.completed_date,
+    };
+
     try {
 
       await axios.put(
         `http://127.0.0.1:8000/api/maintenance/${id}/`,
-        formData
+        data
       );
 
       alert("Maintenance Updated Successfully");
-      navigate("/maintenance");
+
+      window.location.href = "/maintenance";
 
     } catch (error) {
 
       console.log(error.response?.data);
+
       alert("Update Failed");
 
     }
@@ -103,10 +127,9 @@ function EditMaintenance() {
 
       <form onSubmit={handleSubmit}>
 
-       
         <select
           name="asset"
-          value={formData.asset}
+          value={formData.asset || ""}
           onChange={handleChange}
           required
         >
@@ -119,11 +142,9 @@ function EditMaintenance() {
           ))}
         </select>
 
-        
-
         <select
           name="employee"
-          value={formData.employee}
+          value={formData.employee || ""}
           onChange={handleChange}
           required
         >
@@ -136,12 +157,11 @@ function EditMaintenance() {
           ))}
         </select>
 
-       
         <input
           type="text"
           name="issue"
           placeholder="Enter Issue"
-          value={formData.issue}
+          value={formData.issue || ""}
           onChange={handleChange}
           required
         />
@@ -151,7 +171,7 @@ function EditMaintenance() {
         <input
           type="date"
           name="reported_date"
-          value={formData.reported_date}
+          value={formData.reported_date || ""}
           onChange={handleChange}
           required
         />
@@ -161,15 +181,13 @@ function EditMaintenance() {
         <input
           type="date"
           name="completed_date"
-          value={formData.completed_date}
+          value={formData.completed_date || ""}
           onChange={handleChange}
         />
 
-       
-
         <select
           name="status"
-          value={formData.status}
+          value={formData.status || "Pending"}
           onChange={handleChange}
           required
         >
@@ -187,7 +205,6 @@ function EditMaintenance() {
     </div>
 
   );
-
 }
 
 export default EditMaintenance;

@@ -1,11 +1,9 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import "../styles/AddAsset.css";
 
 function EditAsset() {
-
-  const navigate = useNavigate();
   const { id } = useParams();
 
   const [categories, setCategories] = useState([]);
@@ -24,71 +22,44 @@ function EditAsset() {
     status: "Available",
   });
 
-  // useEffect(() => {
-  //   loadCategories();
-  //   loadAsset();
-  // }, [id]);
-
-
   useEffect(() => {
-  console.log("EditAsset mounted");
-  console.log("Current ID:", id);
-
-  loadCategories();
-  loadAsset();
-}, [id]);
+    loadCategories();
+    loadAsset();
+  }, [id]);
 
   const loadCategories = async () => {
-
     try {
-
       const response = await axios.get(
         "http://127.0.0.1:8000/api/categories/"
       );
-
       setCategories(response.data);
-
     } catch (error) {
-
       console.log(error);
-
     }
-
   };
 
   const loadAsset = async () => {
-
     try {
-
       const response = await axios.get(
         `http://127.0.0.1:8000/api/assets/${id}/`
       );
-
       setFormData(response.data);
-
     } catch (error) {
-
       console.log(error);
-
     }
-
   };
 
   const handleChange = (e) => {
-
-    setFormData({
-      ...formData,
+    setFormData((prev) => ({
+      ...prev,
       [e.target.name]: e.target.value,
-    });
-
+    }));
   };
 
   const handleSubmit = async (e) => {
-
     e.preventDefault();
 
     try {
-
       await axios.put(
         `http://127.0.0.1:8000/api/assets/${id}/`,
         formData
@@ -96,62 +67,49 @@ function EditAsset() {
 
       alert("Asset Updated Successfully");
 
-      navigate("/assets");
+      // Temporary test
+      window.location.href = "/assets";
 
     } catch (error) {
-
       console.log(error);
-
       alert("Update Failed");
-
     }
-
   };
 
   return (
-
     <div className="add-asset-page">
-
       <h1>Edit Asset</h1>
 
       <form onSubmit={handleSubmit}>
-
         <input
           type="text"
           name="asset_id"
           placeholder="Asset ID"
-          value={formData.asset_id}
+          value={formData.asset_id || ""}
           onChange={handleChange}
           required
         />
 
         <select
           name="category"
-          value={formData.category}
+          value={formData.category || ""}
           onChange={handleChange}
           required
         >
-
           <option value="">Select Category</option>
 
           {categories.map((item) => (
-
-            <option
-              key={item.id}
-              value={item.id}
-            >
+            <option key={item.id} value={item.id}>
               {item.category_name}
             </option>
-
           ))}
-
         </select>
 
         <input
           type="text"
           name="asset_name"
           placeholder="Asset Name"
-          value={formData.asset_name}
+          value={formData.asset_name || ""}
           onChange={handleChange}
           required
         />
@@ -160,7 +118,7 @@ function EditAsset() {
           type="text"
           name="brand"
           placeholder="Brand"
-          value={formData.brand}
+          value={formData.brand || ""}
           onChange={handleChange}
           required
         />
@@ -169,7 +127,7 @@ function EditAsset() {
           type="text"
           name="model"
           placeholder="Model"
-          value={formData.model}
+          value={formData.model || ""}
           onChange={handleChange}
           required
         />
@@ -178,7 +136,7 @@ function EditAsset() {
           type="text"
           name="serial_number"
           placeholder="Serial Number"
-          value={formData.serial_number}
+          value={formData.serial_number || ""}
           onChange={handleChange}
           required
         />
@@ -186,7 +144,7 @@ function EditAsset() {
         <input
           type="date"
           name="purchase_date"
-          value={formData.purchase_date}
+          value={formData.purchase_date || ""}
           onChange={handleChange}
           required
         />
@@ -194,7 +152,7 @@ function EditAsset() {
         <input
           type="date"
           name="warranty_expiry"
-          value={formData.warranty_expiry}
+          value={formData.warranty_expiry || ""}
           onChange={handleChange}
           required
         />
@@ -203,7 +161,7 @@ function EditAsset() {
           type="number"
           name="price"
           placeholder="Price"
-          value={formData.price}
+          value={formData.price || ""}
           onChange={handleChange}
           required
         />
@@ -212,14 +170,14 @@ function EditAsset() {
           type="text"
           name="location"
           placeholder="Location"
-          value={formData.location}
+          value={formData.location || ""}
           onChange={handleChange}
           required
         />
 
         <select
           name="status"
-          value={formData.status}
+          value={formData.status || "Available"}
           onChange={handleChange}
         >
           <option value="Available">Available</option>
@@ -228,16 +186,10 @@ function EditAsset() {
           <option value="Disposed">Disposed</option>
         </select>
 
-        <button type="submit">
-          Update Asset
-        </button>
-
+        <button type="submit">Update Asset</button>
       </form>
-
     </div>
-
   );
-
 }
 
 export default EditAsset;

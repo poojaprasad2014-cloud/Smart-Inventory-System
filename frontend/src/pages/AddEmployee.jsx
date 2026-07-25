@@ -1,12 +1,8 @@
 import { useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
 import "../styles/AddEmployee.css";
 
 function AddEmployee() {
-
-  const navigate = useNavigate();
-
   const [formData, setFormData] = useState({
     employee_id: "",
     employee_name: "",
@@ -14,24 +10,22 @@ function AddEmployee() {
     designation: "",
     email: "",
     password: "",
-    phone: ""
+    phone: "",
   });
 
   const handleChange = (e) => {
+    const { name, value } = e.target;
 
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
-
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
   };
 
   const handleSubmit = async (e) => {
-
     e.preventDefault();
 
     try {
-
       await axios.post(
         "http://127.0.0.1:8000/api/employees/",
         formData
@@ -39,31 +33,23 @@ function AddEmployee() {
 
       alert("Employee Added Successfully");
 
-      navigate("/employees");
-
+      window.location.href = "/employees";
     } catch (error) {
-
       console.log(error.response?.data);
-
       alert("Failed to Add Employee");
-
     }
-
   };
 
   return (
-
     <div className="add-employee-page">
-
       <h1>Add Employee</h1>
 
       <form onSubmit={handleSubmit}>
-
         <input
           type="text"
           name="employee_id"
           placeholder="Employee ID"
-          value={formData.employee_id}
+          value={formData.employee_id || ""}
           onChange={handleChange}
           required
         />
@@ -72,7 +58,7 @@ function AddEmployee() {
           type="text"
           name="employee_name"
           placeholder="Employee Name"
-          value={formData.employee_name}
+          value={formData.employee_name || ""}
           onChange={handleChange}
           required
         />
@@ -81,7 +67,7 @@ function AddEmployee() {
           type="text"
           name="department"
           placeholder="Department"
-          value={formData.department}
+          value={formData.department || ""}
           onChange={handleChange}
           required
         />
@@ -90,7 +76,7 @@ function AddEmployee() {
           type="text"
           name="designation"
           placeholder="Designation"
-          value={formData.designation}
+          value={formData.designation || ""}
           onChange={handleChange}
           required
         />
@@ -99,7 +85,7 @@ function AddEmployee() {
           type="email"
           name="email"
           placeholder="Email"
-          value={formData.email}
+          value={formData.email || ""}
           onChange={handleChange}
           required
         />
@@ -108,7 +94,7 @@ function AddEmployee() {
           type="password"
           name="password"
           placeholder="Password"
-          value={formData.password}
+          value={formData.password || ""}
           onChange={handleChange}
           required
         />
@@ -117,7 +103,7 @@ function AddEmployee() {
           type="text"
           name="phone"
           placeholder="Phone Number"
-          value={formData.phone}
+          value={formData.phone || ""}
           onChange={handleChange}
           required
         />
@@ -125,13 +111,9 @@ function AddEmployee() {
         <button type="submit">
           Save Employee
         </button>
-
       </form>
-
     </div>
-
   );
-
 }
 
 export default AddEmployee;

@@ -72,7 +72,8 @@ function MyAssets() {
                 <thead>
                   <tr>
                     <th>Asset ID</th>
-                    <th>Asset</th>
+                    <th>Asset Name</th>
+                    <th>Category</th>
                     <th>Assigned Date</th>
                     <th>Return Date</th>
                   </tr>
@@ -87,6 +88,7 @@ function MyAssets() {
                       <tr key={item.id}>
                         <td>{item.asset_id}</td>
                         <td>{item.asset_name}</td>
+                        <td>{item.category_name}</td>
                         <td>{item.assigned_date}</td>
                         <td>{item.return_date || "-"}</td>
                       </tr>
@@ -97,7 +99,7 @@ function MyAssets() {
 
                     <tr>
                       <td
-                        colSpan="4"
+                        colSpan="5"
                         style={{
                           textAlign: "center",
                           padding: "20px"

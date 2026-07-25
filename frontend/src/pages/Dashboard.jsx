@@ -23,14 +23,12 @@ import AdminNavbar from "../components/AdminNavbar";
 import "../styles/Dashboard.css";
 
 function Dashboard() {
-
   const navigate = useNavigate();
 
   const [assets, setAssets] = useState([]);
   const [maintenance, setMaintenance] = useState([]);
 
   useEffect(() => {
-
     const admin = localStorage.getItem("admin");
 
     if (!admin) {
@@ -39,116 +37,91 @@ function Dashboard() {
     }
 
     loadDashboard();
-
   }, [navigate]);
 
   const loadDashboard = async () => {
-
     try {
-
       const [assetRes, maintenanceRes] = await Promise.all([
         axios.get("http://127.0.0.1:8000/api/assets/"),
-        axios.get("http://127.0.0.1:8000/api/maintenance/")
+        axios.get("http://127.0.0.1:8000/api/maintenance/"),
       ]);
 
       setAssets(assetRes.data);
       setMaintenance(maintenanceRes.data);
-
     } catch (err) {
-
       console.log(err);
-
     }
-
   };
 
   const totalAssets = assets.length;
 
   const availableAssets =
-    assets.filter(a => a.status === "Available").length;
+    assets.filter((a) => a.status === "Available").length;
 
   const assignedAssets =
-    assets.filter(a => a.status === "Assigned").length;
+    assets.filter((a) => a.status === "Assigned").length;
 
-  const disposedAssets =
-    assets.filter(a => a.status === "Disposed").length;
+  const recycledAssets =
+    assets.filter((a) => a.status === "Recycled").length;
 
-  const maintenanceAssets =
-    maintenance.length;
+  const maintenanceAssets = maintenance.length;
 
-  const recentAssets =
-    [...assets].reverse().slice(0, 5);
+  const recentAssets = [...assets].reverse().slice(0, 5);
 
   const today = new Date();
 
-  const expiringSoon = assets.filter(asset => {
-
+  const expiringSoon = assets.filter((asset) => {
     const expiry = new Date(asset.warranty_expiry);
 
-    const diff =
-      Math.ceil((expiry - today) / (1000 * 60 * 60 * 24));
+    const diff = Math.ceil(
+      (expiry - today) / (1000 * 60 * 60 * 24)
+    );
 
     return diff >= 0 && diff <= 30;
-
   });
 
   const pieData = [
-
     {
       name: "Available",
-      value: availableAssets
+      value: availableAssets,
     },
-
     {
       name: "Assigned",
-      value: assignedAssets
+      value: assignedAssets,
     },
-
     {
       name: "Maintenance",
-      value: maintenanceAssets
+      value: maintenanceAssets,
     },
-
     {
-      name: "Disposed",
-      value: disposedAssets
-    }
-
+      name: "Recycled",
+      value: recycledAssets,
+    },
   ];
 
   const COLORS = [
     "#10b981",
     "#2563eb",
     "#f59e0b",
-    "#ef4444"
+    "#ef4444",
   ];
 
   return (
-
     <>
-
       <AdminNavbar />
 
       <div className="dashboard-page">
-
         <div className="dashboard-container">
 
           <div className="dashboard-header">
 
             <div>
-
               <h1>Dashboard</h1>
-
               <p>Welcome Back, Admin 👋</p>
-
             </div>
 
             <div className="header-right">
-
-              <span>
-                {today.toLocaleDateString()}
-              </span>
-
+              <span>{today.toLocaleDateString()}</span>
             </div>
 
           </div>
@@ -156,58 +129,40 @@ function Dashboard() {
           <div className="cards">
 
             <div className="card">
-
               <FaLaptop className="card-icon" />
-
               <h2>{totalAssets}</h2>
-
               <p>Total Assets</p>
-
             </div>
 
             <div className="card">
-
               <FaCheckCircle className="card-icon green" />
-
               <h2>{availableAssets}</h2>
-
               <p>Available</p>
-
             </div>
 
             <div className="card">
-
               <FaUserCheck className="card-icon blue" />
-
               <h2>{assignedAssets}</h2>
-
               <p>Assigned</p>
-
             </div>
 
             <div className="card">
-
               <FaTools className="card-icon orange" />
-
               <h2>{maintenanceAssets}</h2>
-
               <p>Maintenance</p>
-
             </div>
 
           </div>
-                    {/* Asset Status Chart */}
+
+          {/* Asset Status Chart */}
 
           <div className="chart-grid">
 
             <div className="chart-card">
 
               <div className="card-title">
-
                 <h2>Asset Status</h2>
-
                 <FaChartBar />
-
               </div>
 
               <ResponsiveContainer width="100%" height={320}>
@@ -225,18 +180,15 @@ function Dashboard() {
                   >
 
                     {pieData.map((entry, index) => (
-
                       <Cell
                         key={index}
                         fill={COLORS[index]}
                       />
-
                     ))}
 
                   </Pie>
 
                   <Tooltip />
-
                   <Legend />
 
                 </PieChart>
@@ -246,15 +198,12 @@ function Dashboard() {
             </div>
 
           </div>
-
-          {/* Recent Assets */}
+                    {/* Recent Assets */}
 
           <div className="table-card">
 
             <div className="card-title">
-
               <h2>Recent Assets</h2>
-
             </div>
 
             <table className="dashboard-table">
@@ -262,12 +211,10 @@ function Dashboard() {
               <thead>
 
                 <tr>
-
                   <th>Asset Name</th>
                   <th>Category</th>
                   <th>Status</th>
                   <th>Location</th>
-
                 </tr>
 
               </thead>
@@ -282,30 +229,13 @@ function Dashboard() {
 
                       <td>{item.asset_name}</td>
 
-                      <td>
-                        {item.category_name
-                          ? item.category_name
-                          : item.category}
-                      </td>
+                      <td>{item.category_name}</td>
 
                       <td>
-
-                        <span
-                          className={
-                            item.status === "Available"
-                              ? "status available"
-                              : item.status === "Assigned"
-                              ? "status assigned"
-                              : item.status === "Maintenance"
-                              ? "status maintenance"
-                              : "status disposed"
-                          }
-                        >
-                          {item.status}
-                        </span>
-
-                      </td>
-
+                          <span className={`status ${item.status.toLowerCase()}`}>
+                            {item.status}
+                          </span>
+                        </td>
                       <td>{item.location}</td>
 
                     </tr>
@@ -335,14 +265,13 @@ function Dashboard() {
             </table>
 
           </div>
-                    {/* Warranty Alerts */}
+
+          {/* Warranty Alerts */}
 
           <div className="table-card">
 
             <div className="card-title">
-
               <h2>Warranty Expiring Soon</h2>
-
             </div>
 
             <table className="dashboard-table">
@@ -350,12 +279,11 @@ function Dashboard() {
               <thead>
 
                 <tr>
-
                   <th>Asset ID</th>
                   <th>Asset Name</th>
+                  <th>Category</th>
                   <th>Warranty Expiry</th>
                   <th>Days Left</th>
-
                 </tr>
 
               </thead>
@@ -368,16 +296,18 @@ function Dashboard() {
 
                     const daysLeft = Math.ceil(
                       (new Date(item.warranty_expiry) - today) /
-                      (1000 * 60 * 60 * 24)
+                        (1000 * 60 * 60 * 24)
                     );
 
                     return (
 
                       <tr key={item.id}>
 
-                        <td>{item.asset_id || item.id}</td>
+                        <td>{item.asset_id}</td>
 
                         <td>{item.asset_name}</td>
+
+                        <td>{item.category_name}</td>
 
                         <td>{item.warranty_expiry}</td>
 
@@ -406,7 +336,7 @@ function Dashboard() {
                   <tr>
 
                     <td
-                      colSpan="4"
+                      colSpan="5"
                       style={{
                         textAlign: "center",
                         padding: "30px",
@@ -424,15 +354,12 @@ function Dashboard() {
             </table>
 
           </div>
-
-          {/* Recent Activity */}
+                    {/* Recent Activity */}
 
           <div className="activity-card">
 
             <div className="card-title">
-
               <h2>Recent Activity</h2>
-
             </div>
 
             <div className="activity-list">

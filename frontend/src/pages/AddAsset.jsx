@@ -1,38 +1,22 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
 import "../styles/AddAsset.css";
 
 function AddAsset() {
-
-  const navigate = useNavigate();
-
   const [categories, setCategories] = useState([]);
 
   const [formData, setFormData] = useState({
-
     asset_id: "",
-
     category: "",
-
     asset_name: "",
-
     brand: "",
-
     model: "",
-
     serial_number: "",
-
     purchase_date: "",
-
     warranty_expiry: "",
-
     price: "",
-
     location: "",
-
     status: "",
-
   });
 
   useEffect(() => {
@@ -40,38 +24,30 @@ function AddAsset() {
   }, []);
 
   const loadCategories = async () => {
-
     try {
-
       const response = await axios.get(
         "http://127.0.0.1:8000/api/categories/"
       );
 
       setCategories(response.data);
-
     } catch (error) {
-
       console.log(error);
-
     }
-
   };
 
   const handleChange = (e) => {
+    const { name, value } = e.target;
 
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
-
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
   };
 
   const handleSubmit = async (e) => {
-
     e.preventDefault();
 
     try {
-
       await axios.post(
         "http://127.0.0.1:8000/api/assets/",
         formData
@@ -79,38 +55,30 @@ function AddAsset() {
 
       alert("Asset Added Successfully");
 
-      navigate("/assets");
-
+      window.location.href = "/assets";
     } catch (error) {
-
       console.log(error);
-
       alert("Failed to Add Asset");
-
     }
-
   };
 
   return (
-
     <div className="add-asset-page">
-
       <h1>Add Asset</h1>
 
       <form onSubmit={handleSubmit}>
-
         <input
           type="text"
           name="asset_id"
           placeholder="Asset ID (Example: AST001)"
-          value={formData.asset_id}
+          value={formData.asset_id || ""}
           onChange={handleChange}
           required
         />
 
         <select
           name="category"
-          value={formData.category}
+          value={formData.category || ""}
           onChange={handleChange}
           required
         >
@@ -127,15 +95,16 @@ function AddAsset() {
           type="text"
           name="asset_name"
           placeholder="Asset Name"
-          value={formData.asset_name}
+          value={formData.asset_name || ""}
           onChange={handleChange}
           required
         />
-                <input
+
+        <input
           type="text"
           name="brand"
           placeholder="Brand"
-          value={formData.brand}
+          value={formData.brand || ""}
           onChange={handleChange}
           required
         />
@@ -144,7 +113,7 @@ function AddAsset() {
           type="text"
           name="model"
           placeholder="Model"
-          value={formData.model}
+          value={formData.model || ""}
           onChange={handleChange}
           required
         />
@@ -153,7 +122,7 @@ function AddAsset() {
           type="text"
           name="serial_number"
           placeholder="Serial Number"
-          value={formData.serial_number}
+          value={formData.serial_number || ""}
           onChange={handleChange}
           required
         />
@@ -165,7 +134,7 @@ function AddAsset() {
         <input
           type="date"
           name="purchase_date"
-          value={formData.purchase_date}
+          value={formData.purchase_date || ""}
           onChange={handleChange}
           required
         />
@@ -177,7 +146,7 @@ function AddAsset() {
         <input
           type="date"
           name="warranty_expiry"
-          value={formData.warranty_expiry}
+          value={formData.warranty_expiry || ""}
           onChange={handleChange}
           required
         />
@@ -186,7 +155,7 @@ function AddAsset() {
           type="number"
           name="price"
           placeholder="Price"
-          value={formData.price}
+          value={formData.price || ""}
           onChange={handleChange}
           required
         />
@@ -195,14 +164,14 @@ function AddAsset() {
           type="text"
           name="location"
           placeholder="Location"
-          value={formData.location}
+          value={formData.location || ""}
           onChange={handleChange}
           required
         />
 
         <select
           name="status"
-          value={formData.status}
+          value={formData.status || ""}
           onChange={handleChange}
           required
         >
@@ -210,33 +179,18 @@ function AddAsset() {
             Select Status
           </option>
 
-          <option value="Available">
-            Available
-          </option>
-
-          <option value="Assigned">
-            Assigned
-          </option>
-
-          <option value="Maintenance">
-            Maintenance
-          </option>
-
-          <option value="Disposed">
-            Disposed
-          </option>
-
+          <option value="Available">Available</option>
+          <option value="Assigned">Assigned</option>
+          <option value="Maintenance">Maintenance</option>
+          <option value="Disposed">Disposed</option>
         </select>
-                <button type="submit">
+
+        <button type="submit">
           Save Asset
         </button>
-
       </form>
-
     </div>
-
   );
-
 }
 
 export default AddAsset;

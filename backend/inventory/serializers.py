@@ -167,6 +167,11 @@ class RecyclingSerializer(serializers.ModelSerializer):
         read_only=True
     )
 
+    category_name = serializers.CharField(
+        source="asset.category.category_name",
+        read_only=True
+    )
+
     class Meta:
         model = Recycling
         fields = [
@@ -174,6 +179,7 @@ class RecyclingSerializer(serializers.ModelSerializer):
             "asset",
             "asset_id",
             "asset_name",
+            "category_name",
             "recycle_date",
             "method",
             "reason",

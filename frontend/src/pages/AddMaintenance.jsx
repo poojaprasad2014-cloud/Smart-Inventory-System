@@ -1,12 +1,8 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
 import "../styles/AddMaintenance.css";
 
 function AddMaintenance() {
-
-  const navigate = useNavigate();
-
   const [assets, setAssets] = useState([]);
   const [employees, setEmployees] = useState([]);
 
@@ -16,7 +12,7 @@ function AddMaintenance() {
     issue: "",
     reported_date: "",
     completed_date: "",
-    status: "Pending"
+    status: "Pending",
   });
 
   useEffect(() => {
@@ -25,47 +21,39 @@ function AddMaintenance() {
   }, []);
 
   const loadAssets = async () => {
-
     try {
-
       const response = await axios.get(
         "http://127.0.0.1:8000/api/assets/"
       );
 
       setAssets(response.data);
-
     } catch (error) {
       console.log(error);
     }
-
   };
 
   const loadEmployees = async () => {
-
     try {
-
       const response = await axios.get(
         "http://127.0.0.1:8000/api/employees/"
       );
 
       setEmployees(response.data);
-
     } catch (error) {
       console.log(error);
     }
-
   };
 
   const handleChange = (e) => {
+    const { name, value } = e.target;
 
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
-
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
   };
-    const handleSubmit = async (e) => {
 
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     const data = {
@@ -77,7 +65,6 @@ function AddMaintenance() {
     };
 
     try {
-
       await axios.post(
         "http://127.0.0.1:8000/api/maintenance/",
         data
@@ -85,79 +72,53 @@ function AddMaintenance() {
 
       alert("Maintenance Added Successfully");
 
-      navigate("/maintenance");
-
+      window.location.href = "/maintenance";
     } catch (error) {
-
       console.log(error.response?.data);
-
       alert("Failed to Add Maintenance");
-
     }
-
   };
 
   return (
-
     <div className="add-maintenance-page">
-
       <h1>Add Maintenance</h1>
 
       <form onSubmit={handleSubmit}>
-
-      
-
         <select
           name="asset"
-          value={formData.asset}
+          value={formData.asset || ""}
           onChange={handleChange}
           required
         >
-
           <option value="">Select Asset</option>
 
           {assets.map((item) => (
-
-            <option
-              key={item.id}
-              value={item.id}
-            >
+            <option key={item.id} value={item.id}>
               {item.asset_id} - {item.asset_name}
             </option>
-
           ))}
-
         </select>
 
-       
         <select
           name="employee"
-          value={formData.employee}
+          value={formData.employee || ""}
           onChange={handleChange}
           required
         >
-
           <option value="">Select Employee</option>
 
           {employees.map((item) => (
-
-            <option
-              key={item.id}
-              value={item.id}
-            >
+            <option key={item.id} value={item.id}>
               {item.employee_id} - {item.employee_name}
             </option>
-
           ))}
-
         </select>
-               
 
         <input
           type="text"
           name="issue"
           placeholder="Enter Issue"
-          value={formData.issue}
+          value={formData.issue || ""}
           onChange={handleChange}
           required
         />
@@ -167,7 +128,7 @@ function AddMaintenance() {
         <input
           type="date"
           name="reported_date"
-          value={formData.reported_date}
+          value={formData.reported_date || ""}
           onChange={handleChange}
           required
         />
@@ -177,15 +138,13 @@ function AddMaintenance() {
         <input
           type="date"
           name="completed_date"
-          value={formData.completed_date}
+          value={formData.completed_date || ""}
           onChange={handleChange}
         />
 
-      
-
         <select
           name="status"
-          value={formData.status}
+          value={formData.status || ""}
           onChange={handleChange}
         >
           <option value="Pending">Pending</option>
@@ -196,13 +155,9 @@ function AddMaintenance() {
         <button type="submit">
           Save Maintenance
         </button>
-
       </form>
-
     </div>
-
   );
-
 }
 
 export default AddMaintenance;

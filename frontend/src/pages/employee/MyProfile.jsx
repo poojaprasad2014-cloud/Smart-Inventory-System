@@ -26,9 +26,7 @@ function MyProfile() {
       <EmployeeNavbar />
 
       <div className="profile-container">
-
-        <h1>Employee Profile</h1>
-
+        
         <div className="profile-card">
 
           <div className="profile-image">
@@ -39,7 +37,7 @@ function MyProfile() {
 
             <h2>{employee.employee_name}</h2>
 
-            <span>Smart Inventory Management System</span>
+    
 
           </div>
 

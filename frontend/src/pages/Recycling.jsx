@@ -6,6 +6,7 @@ import "../styles/Recycling.css";
 function Recycling() {
 
     const [recycling, setRecycling] = useState([]);
+    const [search, setSearch] = useState("");
 
     useEffect(() => {
         loadRecycling();
@@ -30,7 +31,20 @@ function Recycling() {
 
     };
 
-    return (
+    const filteredRecycling = recycling.filter((item) => {
+
+        const keyword = search.toLowerCase();
+
+        return (
+
+            item.asset_id?.toLowerCase().includes(keyword) ||
+            item.asset_name?.toLowerCase().includes(keyword) ||
+            item.category_name?.toLowerCase().includes(keyword)
+
+        );
+
+    });
+        return (
         <>
             <AdminNavbar />
 
@@ -50,6 +64,17 @@ function Recycling() {
 
                     </div>
 
+                    <div className="search-box">
+
+                        <input
+                            type="text"
+                            placeholder="Search Asset ID, Asset Name or Category..."
+                            value={search}
+                            onChange={(e) => setSearch(e.target.value)}
+                        />
+
+                    </div>
+
                     <div className="recycling-table">
 
                         <table>
@@ -60,6 +85,7 @@ function Recycling() {
 
                                     <th>Asset ID</th>
                                     <th>Asset Name</th>
+                                    <th>Category</th>
                                     <th>Recycle Date</th>
                                     <th>Method</th>
                                     <th>Reason</th>
@@ -70,15 +96,18 @@ function Recycling() {
                             </thead>
 
                             <tbody>
-                                                                {recycling.length > 0 ? (
 
-                                    recycling.map((item) => (
+                                {filteredRecycling.length > 0 ? (
+                                                                 
+                                    filteredRecycling.map((item) => (
 
                                         <tr key={item.id}>
 
                                             <td>{item.asset_id}</td>
 
                                             <td>{item.asset_name}</td>
+
+                                            <td>{item.category_name}</td>
 
                                             <td>{item.recycle_date}</td>
 
@@ -101,7 +130,7 @@ function Recycling() {
                                     <tr>
 
                                         <td
-                                            colSpan="6"
+                                            colSpan="7"
                                             style={{
                                                 textAlign: "center",
                                                 padding: "20px",
@@ -123,8 +152,7 @@ function Recycling() {
                 </div>
 
             </div>
-
-        </>
+                    </>
 
     );
 

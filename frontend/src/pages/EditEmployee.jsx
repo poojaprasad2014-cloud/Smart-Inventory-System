@@ -1,11 +1,9 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import "../styles/EditEmployee.css";
 
 function EditEmployee() {
-
-  const navigate = useNavigate();
   const { id } = useParams();
 
   const [formData, setFormData] = useState({
@@ -15,46 +13,36 @@ function EditEmployee() {
     designation: "",
     email: "",
     password: "",
-    phone: ""
+    phone: "",
   });
 
   useEffect(() => {
     loadEmployee();
-  }, []);
+  }, [id]);
 
   const loadEmployee = async () => {
-
     try {
-
       const response = await axios.get(
         `http://127.0.0.1:8000/api/employees/${id}/`
       );
 
       setFormData(response.data);
-
     } catch (error) {
-
       console.log(error);
-
     }
-
   };
 
   const handleChange = (e) => {
-
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
-
+    setFormData((prev) => ({
+      ...prev,
+      [e.target.name]: e.target.value,
+    }));
   };
 
   const handleSubmit = async (e) => {
-
     e.preventDefault();
 
     try {
-
       await axios.put(
         `http://127.0.0.1:8000/api/employees/${id}/`,
         formData
@@ -62,20 +50,15 @@ function EditEmployee() {
 
       alert("Employee Updated Successfully");
 
-      navigate("/employees");
+      window.location.href = "/employees";
 
     } catch (error) {
-
       console.log(error.response?.data);
-
       alert("Update Failed");
-
     }
-
   };
 
   return (
-
     <div className="edit-employee-page">
 
       <h1>Edit Employee</h1>
@@ -86,7 +69,7 @@ function EditEmployee() {
           type="text"
           name="employee_id"
           placeholder="Employee ID"
-          value={formData.employee_id}
+          value={formData.employee_id || ""}
           onChange={handleChange}
           required
         />
@@ -95,7 +78,7 @@ function EditEmployee() {
           type="text"
           name="employee_name"
           placeholder="Employee Name"
-          value={formData.employee_name}
+          value={formData.employee_name || ""}
           onChange={handleChange}
           required
         />
@@ -104,7 +87,7 @@ function EditEmployee() {
           type="text"
           name="department"
           placeholder="Department"
-          value={formData.department}
+          value={formData.department || ""}
           onChange={handleChange}
           required
         />
@@ -113,7 +96,7 @@ function EditEmployee() {
           type="text"
           name="designation"
           placeholder="Designation"
-          value={formData.designation}
+          value={formData.designation || ""}
           onChange={handleChange}
           required
         />
@@ -122,7 +105,7 @@ function EditEmployee() {
           type="email"
           name="email"
           placeholder="Email"
-          value={formData.email}
+          value={formData.email || ""}
           onChange={handleChange}
           required
         />
@@ -131,7 +114,7 @@ function EditEmployee() {
           type="password"
           name="password"
           placeholder="Password"
-          value={formData.password}
+          value={formData.password || ""}
           onChange={handleChange}
           required
         />
@@ -140,7 +123,7 @@ function EditEmployee() {
           type="text"
           name="phone"
           placeholder="Phone Number"
-          value={formData.phone}
+          value={formData.phone || ""}
           onChange={handleChange}
           required
         />
@@ -152,9 +135,7 @@ function EditEmployee() {
       </form>
 
     </div>
-
   );
-
 }
 
 export default EditEmployee;

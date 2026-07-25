@@ -1,12 +1,8 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "../styles/AddAssignment.css";
 
 function AddAssignment() {
-
-  const navigate = useNavigate();
-
   const [assets, setAssets] = useState([]);
   const [employees, setEmployees] = useState([]);
 
@@ -23,7 +19,6 @@ function AddAssignment() {
 
   const fetchData = async () => {
     try {
-
       const assetResponse = await axios.get(
         "http://127.0.0.1:8000/api/assets/"
       );
@@ -34,7 +29,6 @@ function AddAssignment() {
 
       setAssets(assetResponse.data);
       setEmployees(employeeResponse.data);
-
     } catch (error) {
       console.log(error);
       alert("Failed to Load Data");
@@ -42,25 +36,26 @@ function AddAssignment() {
   };
 
   const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
+    const { name, value } = e.target;
+
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
-
       await axios.post(
         "http://127.0.0.1:8000/api/assignments/",
         formData
       );
 
       alert("Asset Assigned Successfully");
-      navigate("/assignments");
 
+      window.location.href = "/assignments";
     } catch (error) {
       console.log(error);
       alert("Assignment Failed");
@@ -69,11 +64,9 @@ function AddAssignment() {
 
   return (
     <div className="form-container">
-
       <h1>Assign Asset</h1>
 
       <form onSubmit={handleSubmit}>
-
         <select
           name="asset"
           value={formData.asset}
@@ -110,7 +103,7 @@ function AddAssignment() {
           <input
             type="date"
             name="assigned_date"
-            value={formData.assigned_date}
+            value={formData.assigned_date || ""}
             onChange={handleChange}
             required
           />
@@ -122,7 +115,7 @@ function AddAssignment() {
           <input
             type="date"
             name="return_date"
-            value={formData.return_date}
+            value={formData.return_date || ""}
             onChange={handleChange}
           />
         </div>
@@ -130,9 +123,7 @@ function AddAssignment() {
         <button type="submit">
           Assign Asset
         </button>
-
       </form>
-
     </div>
   );
 }

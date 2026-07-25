@@ -159,7 +159,7 @@ function Maintenance() {
 
                   <tr key={item.id}>
 
-                   <td>{index + 1}</td>
+                   <td>{item.id}</td>
 
                     <td className="asset-id">
                       {item.asset_id}
