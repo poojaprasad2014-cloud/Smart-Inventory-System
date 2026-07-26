@@ -191,7 +191,7 @@ function EditMaintenance() {
           onChange={handleChange}
           required
         >
-          <option value="Pending">Pending</option>
+          {/* <option value="Pending">Pending</option> */}
           <option value="In Progress">In Progress</option>
           <option value="Completed">Completed</option>
         </select>

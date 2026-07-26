@@ -181,8 +181,8 @@ function AddAsset() {
 
           <option value="Available">Available</option>
           <option value="Assigned">Assigned</option>
-          <option value="Maintenance">Maintenance</option>
-          <option value="Disposed">Disposed</option>
+          {/* <option value="Maintenance">Maintenance</option> */}
+          <option value="Disposed">Recycled</option>
         </select>
 
         <button type="submit">
