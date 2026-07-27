@@ -153,3 +153,5 @@ def warranty_alert(request):
         })
 
     return Response(data)
+
+
