@@ -64,7 +64,12 @@ function Dashboard() {
   const recycledAssets =
     assets.filter((a) => a.status === "Recycled").length;
 
-  const maintenanceAssets = maintenance.length;
+  // ✅ Only Pending & In Progress are counted as Maintenance
+  const maintenanceAssets = maintenance.filter(
+    (item) =>
+      item.status === "Pending" ||
+      item.status === "In Progress"
+  ).length;
 
   const recentAssets = [...assets].reverse().slice(0, 5);
 
@@ -127,9 +132,8 @@ function Dashboard() {
           </div>
 
           <div className="cards">
-
-            <div className="card">
-              <FaLaptop className="card-icon" />
+                        <div className="card">
+              <FaLaptop className="card-icon blue" />
               <h2>{totalAssets}</h2>
               <p>Total Assets</p>
             </div>
@@ -198,7 +202,8 @@ function Dashboard() {
             </div>
 
           </div>
-                    {/* Recent Assets */}
+
+          {/* Recent Assets */}
 
           <div className="table-card">
 
@@ -232,10 +237,11 @@ function Dashboard() {
                       <td>{item.category_name}</td>
 
                       <td>
-                          <span className={`status ${item.status.toLowerCase()}`}>
-                            {item.status}
-                          </span>
-                        </td>
+                        <span className={`status ${item.status.toLowerCase()}`}>
+                          {item.status}
+                        </span>
+                      </td>
+
                       <td>{item.location}</td>
 
                     </tr>
@@ -243,8 +249,7 @@ function Dashboard() {
                   ))
 
                 ) : (
-
-                  <tr>
+                                    <tr>
 
                     <td
                       colSpan="4"
@@ -296,7 +301,7 @@ function Dashboard() {
 
                     const daysLeft = Math.ceil(
                       (new Date(item.warranty_expiry) - today) /
-                        (1000 * 60 * 60 * 24)
+                      (1000 * 60 * 60 * 24)
                     );
 
                     return (
@@ -332,8 +337,7 @@ function Dashboard() {
                   })
 
                 ) : (
-
-                  <tr>
+                                    <tr>
 
                     <td
                       colSpan="5"
@@ -354,7 +358,8 @@ function Dashboard() {
             </table>
 
           </div>
-                    {/* Recent Activity */}
+
+          {/* Recent Activity */}
 
           <div className="activity-card">
 
@@ -371,8 +376,8 @@ function Dashboard() {
                 </div>
 
                 <div className="activity-content">
-                  <h4>Dashboard Summary</h4>
-                  <p>Inventory data loaded successfully.</p>
+                  <h4>New Asset Added</h4>
+                  <p>A new asset has been added to inventory.</p>
                 </div>
 
                 <span className="activity-time">
@@ -388,8 +393,8 @@ function Dashboard() {
                 </div>
 
                 <div className="activity-content">
-                  <h4>Warranty Check</h4>
-                  <p>Warranty alerts generated from database.</p>
+                  <h4>Maintenance Request</h4>
+                  <p>A maintenance request has been created.</p>
                 </div>
 
                 <span className="activity-time">
@@ -401,15 +406,13 @@ function Dashboard() {
             </div>
 
           </div>
-
-        </div>
+                  </div>
 
       </div>
 
     </>
 
   );
-
 }
 
 export default Dashboard;

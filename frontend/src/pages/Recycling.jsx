@@ -19,6 +19,7 @@ function Recycling() {
             const response = await axios.get(
                 "http://127.0.0.1:8000/api/recycling/"
             );
+            //  console.log(response.data);
 
             setRecycling(response.data);
 
@@ -37,9 +38,11 @@ function Recycling() {
 
         return (
 
-            item.asset_id?.toLowerCase().includes(keyword) ||
-            item.asset_name?.toLowerCase().includes(keyword) ||
-            item.category_name?.toLowerCase().includes(keyword)
+                (item.asset_id || "").toLowerCase().includes(keyword) ||
+                (item.asset_name || "").toLowerCase().includes(keyword) ||
+                (item.category_name || "").toLowerCase().includes(keyword) ||
+                (item.method || "").toLowerCase().includes(keyword) 
+                
 
         );
 

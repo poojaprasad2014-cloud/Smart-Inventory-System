@@ -25,7 +25,7 @@
     border-radius:18px;
     padding:35px;
     box-shadow:0 10px 25px rgba(0,0,0,.08);
-    animation:fadeIn .4s ease;
+    animation:fadeIn .4s ease-in-out;
 }
 
 .recycle-box h2{
@@ -53,13 +53,38 @@
     background:#f8fafc;
     border:1px solid #e5e7eb;
     border-radius:12px;
-    padding:18px;
+    padding:20px;
     margin:20px 0;
 }
 
-.asset-details p{
-    margin:10px 0;
+.detail-row{
+    display:grid;
+    grid-template-columns:140px 20px 1fr;
+    align-items:center;
+    margin-bottom:14px;
+}
+
+.detail-row:last-child{
+    margin-bottom:0;
+}
+
+.label{
     font-size:15px;
+    font-weight:700;
+    color:#111827;
+}
+
+.colon{
+    text-align:center;
+    font-size:15px;
+    font-weight:700;
+    color:#111827;
+}
+
+.value{
+    font-size:15px;
+    color:#475569;
+    word-break:break-word;
 }
 /* ================= Form ================= */
 
@@ -100,7 +125,6 @@
     line-height:1.6;
 }
 
-
 .form-group select:invalid{
     color:#9ca3af;
 }
@@ -112,6 +136,7 @@
 .form-group textarea::placeholder{
     color:#9ca3af;
 }
+
 /* ================= Buttons ================= */
 
 .btn-group{
@@ -153,7 +178,7 @@
 }
 /* ================= Responsive ================= */
 
-@media(max-width:768px){
+@media (max-width:768px){
 
     .recycle-page{
         padding:20px;
@@ -175,7 +200,14 @@
         padding:15px;
     }
 
-    .asset-details p{
+    .detail-row{
+        grid-template-columns:120px 18px 1fr;
+        margin-bottom:12px;
+    }
+
+    .label,
+    .colon,
+    .value{
         font-size:14px;
     }
 
@@ -191,6 +223,7 @@
 
     .btn-group{
         flex-direction:column;
+        gap:12px;
     }
 
     .yes-btn,
@@ -200,7 +233,11 @@
 
 }
 
-@media(max-width:480px){
+@media (max-width:480px){
+
+    .recycle-page{
+        padding:15px;
+    }
 
     .recycle-box{
         padding:20px;
@@ -215,17 +252,20 @@
         font-size:13px;
     }
 
-    .asset-details p{
+    .detail-row{
+        grid-template-columns:90px 15px 1fr;
+        margin-bottom:10px;
+    }
+
+    .label,
+    .colon,
+    .value{
         font-size:13px;
     }
 
 }
 
 /* ================= Animation ================= */
-
-.recycle-box{
-    animation:fadeIn .4s ease-in-out;
-}
 
 @keyframes fadeIn{
 

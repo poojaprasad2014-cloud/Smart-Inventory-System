@@ -1,5 +1,12 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+
+import {
+  FaLaptop,
+  FaExclamationCircle,
+  FaCheckCircle,
+} from "react-icons/fa";
+
 import "../../styles/EmployeeDashboard.css";
 import EmployeeNavbar from "../../components/EmployeeNavbar";
 
@@ -16,7 +23,9 @@ function EmployeeDashboard() {
 
       try {
 
-        const employee = JSON.parse(localStorage.getItem("employee"));
+        const employee = JSON.parse(
+          localStorage.getItem("employee")
+        );
 
         // Assigned Assets
         const assetResponse = await axios.get(
@@ -24,7 +33,8 @@ function EmployeeDashboard() {
         );
 
         const myAssets = assetResponse.data.filter(
-          (item) => Number(item.employee) === Number(employee.id)
+          (item) =>
+            Number(item.employee) === Number(employee.id)
         );
 
         setAssets(myAssets);
@@ -35,7 +45,8 @@ function EmployeeDashboard() {
         );
 
         const myComplaints = complaintResponse.data.filter(
-          (item) => Number(item.employee) === Number(employee.id)
+          (item) =>
+            Number(item.employee) === Number(employee.id)
         );
 
         setComplaints(myComplaints);
@@ -52,13 +63,15 @@ function EmployeeDashboard() {
 
   }, []);
 
-  const pendingComplaints = complaints.filter(
-    (item) => item.status === "Pending"
-  ).length;
+  const pendingComplaints =
+    complaints.filter(
+      (item) => item.status === "Pending"
+    ).length;
 
-  const completedComplaints = complaints.filter(
-    (item) => item.status === "Completed"
-  ).length;
+  const completedComplaints =
+    complaints.filter(
+      (item) => item.status === "Completed"
+    ).length;
 
   return (
 
@@ -78,39 +91,64 @@ function EmployeeDashboard() {
 
                 <h1>Employee Dashboard</h1>
 
-                <p>Welcome to Smart Inventory System 👋</p>
+                <p>
+                  Welcome to Smart Inventory System 👋
+                </p>
 
               </div>
 
               <div className="header-right">
 
-                <span>{today.toLocaleDateString()}</span>
+                <span>
+                  {today.toLocaleDateString()}
+                </span>
 
               </div>
 
             </div>
-
-            {/* ================= Dashboard Cards ================= */}
+                        {/* ================= Dashboard Cards ================= */}
 
             <div className="cards">
 
               <div className="card">
+
+                <div className="card-icon blue">
+                  <FaLaptop />
+                </div>
+
                 <h2>{assets.length}</h2>
+
                 <p>My Assigned Assets</p>
+
               </div>
 
               <div className="card">
+
+                <div className="card-icon orange">
+                  <FaExclamationCircle />
+                </div>
+
                 <h2>{pendingComplaints}</h2>
+
                 <p>Pending Complaints</p>
+
               </div>
 
               <div className="card">
+
+                <div className="card-icon green">
+                  <FaCheckCircle />
+                </div>
+
                 <h2>{completedComplaints}</h2>
+
                 <p>Completed Complaints</p>
+
               </div>
 
             </div>
-                        {/* ================= My Assigned Assets ================= */}
+
+            {/* ================= My Assigned Assets ================= */}
 
             <div className="table-box">
 
@@ -166,7 +204,11 @@ function EmployeeDashboard() {
                   ) : (
 
                     <tr>
-                      <td colSpan="4">No Assigned Assets</td>
+
+                      <td colSpan="4">
+                        No Assigned Assets
+                      </td>
+
                     </tr>
 
                   )}
@@ -176,8 +218,7 @@ function EmployeeDashboard() {
               </table>
 
             </div>
-
-            {/* ================= My Complaints ================= */}
+                        {/* ================= My Complaints ================= */}
 
             <div className="table-box">
 
@@ -198,7 +239,8 @@ function EmployeeDashboard() {
                 <tbody>
 
                   {complaints.length > 0 ? (
-                                        complaints.map((item) => (
+
+                    complaints.map((item) => (
 
                       <tr key={item.id}>
 
@@ -229,7 +271,11 @@ function EmployeeDashboard() {
                   ) : (
 
                     <tr>
-                      <td colSpan="3">No Complaints Found</td>
+
+                      <td colSpan="3">
+                        No Complaints Found
+                      </td>
+
                     </tr>
 
                   )}

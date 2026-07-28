@@ -98,7 +98,7 @@ body{
     background:linear-gradient(90deg,#2563eb,#3b82f6);
 }
 
-.card-icon{
+/* .card-icon{
     width:60px;
     height:60px;
     margin:0 auto 20px;
@@ -107,9 +107,31 @@ body{
     justify-content:center;
     align-items:center;
     color:#ffffff;
-    font-size:26px;
+    font-size:32px;
     transition:.3s;
+} */
+
+
+.card-icon{
+    font-size:32px;
+    color:#fff;
 }
+
+.blue,
+.green,
+.orange,
+.red{
+    width:60px;
+    height:60px;
+    margin:0 auto 20px;
+    border-radius:50%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+
+
 
 .card:hover .card-icon{
     transform:scale(1.08);

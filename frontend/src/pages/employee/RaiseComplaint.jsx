@@ -15,7 +15,7 @@ function RaiseComplaint() {
     issue: "",
     reported_date: "",
     completed_date: "",
-    status: "Pending"
+    status: "Pending",
   });
 
   useEffect(() => {
@@ -63,12 +63,15 @@ function RaiseComplaint() {
 
     e.preventDefault();
 
+    const employee = JSON.parse(localStorage.getItem("employee"));
+
     try {
 
       await axios.post(
         "http://127.0.0.1:8000/api/maintenance/",
         {
           asset: formData.asset,
+          employee: employee.id,
           issue: formData.issue,
           reported_date: formData.reported_date,
           completed_date: null,
@@ -77,12 +80,13 @@ function RaiseComplaint() {
       );
 
       alert("Complaint Submitted Successfully");
-
       navigate("/my-complaints");
 
     } catch (error) {
 
+      console.log("Backend Error:", error.response?.data);
       console.log(error);
+
       alert("Failed to Submit Complaint");
 
     }
@@ -92,20 +96,15 @@ function RaiseComplaint() {
   return (
 
     <>
-
       <EmployeeNavbar />
 
       <div className="raise-complaint-page">
 
         <div className="complaint-header">
 
-           {/* <div>  */}
+          <h1>Raise Complaint</h1>
 
-            <h1>Raise Complaint</h1>
-
-            <p>Report issues for your assigned assets</p>
-
-         {/* </div>  */}
+          <p>Report issues for your assigned assets</p>
 
         </div>
 
@@ -113,8 +112,6 @@ function RaiseComplaint() {
           className="complaint-form"
           onSubmit={handleSubmit}
         >
-
-         
 
           <select
             name="asset"
@@ -137,27 +134,30 @@ function RaiseComplaint() {
             ))}
 
           </select>
-                <input
-                type="text"
-                name="issue"
-                placeholder="Enter Issue"
-                value={formData.issue}
-                onChange={handleChange}
-                required
-              />
 
-              <div className="date-group">
-                <label>Reported Date</label>
+          <input
+            type="text"
+            name="issue"
+            placeholder="Enter Issue"
+            value={formData.issue}
+            onChange={handleChange}
+            required
+          />
 
-                <input
-                  type="date"
-                  name="reported_date"
-                  value={formData.reported_date}
-                  onChange={handleChange}
-                  required
-                />
-              </div>            
-           
+          <div className="date-group">
+
+            <label>Reported Date</label>
+
+            <input
+              type="date"
+              name="reported_date"
+              value={formData.reported_date}
+              onChange={handleChange}
+              required
+            />
+
+          </div>
+
           <button type="submit">
             Submit Complaint
           </button>

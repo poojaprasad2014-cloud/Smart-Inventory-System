@@ -114,6 +114,45 @@ class AssetAssignmentSerializer(serializers.ModelSerializer):
 # ==========================
 # Maintenance Serializer
 # ==========================
+# class MaintenanceSerializer(serializers.ModelSerializer):
+
+#     asset_id = serializers.CharField(
+#         source="asset.asset_id",
+#         read_only=True
+#     )
+
+#     asset_name = serializers.CharField(
+#         source="asset.asset_name",
+#         read_only=True
+#     )
+
+#     employee_id = serializers.CharField(
+#         source="employee.employee_id",
+#         read_only=True
+#     )
+
+#     employee_name = serializers.CharField(
+#         source="employee.employee_name",
+#         read_only=True
+#     )
+
+#     class Meta:
+#         model = Maintenance
+#         fields = [
+#             "id",
+#             "asset",
+#             "asset_id",
+#             "asset_name",
+#             "employee",
+#             "employee_id",
+#             "employee_name",
+#             "issue",
+#             "reported_date",
+#             "completed_date",
+#             "status",
+#         ]
+
+
 class MaintenanceSerializer(serializers.ModelSerializer):
 
     asset_id = serializers.CharField(
@@ -123,6 +162,11 @@ class MaintenanceSerializer(serializers.ModelSerializer):
 
     asset_name = serializers.CharField(
         source="asset.asset_name",
+        read_only=True
+    )
+
+    category_name = serializers.CharField(
+        source="asset.category.category_name",
         read_only=True
     )
 
@@ -143,6 +187,7 @@ class MaintenanceSerializer(serializers.ModelSerializer):
             "asset",
             "asset_id",
             "asset_name",
+            "category_name",   # ← ഇത് ചേർക്കണം
             "employee",
             "employee_id",
             "employee_name",
@@ -151,6 +196,7 @@ class MaintenanceSerializer(serializers.ModelSerializer):
             "completed_date",
             "status",
         ]
+         
 
 # ==========================
 # Recycling Serializer

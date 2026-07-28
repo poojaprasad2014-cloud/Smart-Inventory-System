@@ -1,0 +1,11 @@
+[33m1f61c18[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m HEAD@{0}: commit: Backend update
+[33m2c2f4f4[m HEAD@{1}: commit: Final project update
+[33m15dcdf3[m HEAD@{2}: checkout: moving from 45d41dfe0ef6799dd67b2bddcb0cc7a329db1e0f to main
+[33m45d41df[m HEAD@{3}: commit: Updated reports and asset pages
+[33m105117f[m HEAD@{4}: checkout: moving from main to 105117f
+[33m15dcdf3[m HEAD@{5}: commit: Update project
+[33m105117f[m HEAD@{6}: reset: moving to origin/main
+[33m105117f[m HEAD@{7}: commit: Updated employee profile and UI improvements
+[33m56c3c16[m HEAD@{8}: commit: Updated latest code
+[33m14ca438[m HEAD@{9}: Branch: renamed refs/heads/master to refs/heads/main
+[33m14ca438[m HEAD@{11}: commit (initial): Initial commit

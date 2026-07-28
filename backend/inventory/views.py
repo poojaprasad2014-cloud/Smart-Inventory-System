@@ -67,10 +67,25 @@ class AssetAssignmentViewSet(viewsets.ModelViewSet):
 # ==========================
 # Maintenance
 # ==========================
+# class MaintenanceViewSet(viewsets.ModelViewSet):
+#     queryset = Maintenance.objects.all()
+#     serializer_class = MaintenanceSerializer
+    
+#     def get_queryset(self):
+#         queryset = super().get_queryset()
+
+#         employee = self.request.query_params.get("employee")
+
+#         if employee:
+#             queryset = queryset.filter(employee_id=employee)
+
+#         return queryset
+
+
 class MaintenanceViewSet(viewsets.ModelViewSet):
     queryset = Maintenance.objects.all()
     serializer_class = MaintenanceSerializer
-    
+
     def get_queryset(self):
         queryset = super().get_queryset()
 
@@ -80,6 +95,21 @@ class MaintenanceViewSet(viewsets.ModelViewSet):
             queryset = queryset.filter(employee_id=employee)
 
         return queryset
+
+    def perform_update(self, serializer):
+
+        print("========== UPDATE ==========")
+        print("Validated Data :", serializer.validated_data)
+
+        maintenance = serializer.save()
+
+        print("Saved Status :", maintenance.status)
+        print("============================")
+
+        if maintenance.status == "Completed":
+            asset = maintenance.asset
+            asset.status = "Assigned"
+            asset.save()
     
 # ==========================
 # Recycling

@@ -10,7 +10,6 @@ function RecycleAsset() {
   const { id } = useParams();
 
   const [asset, setAsset] = useState(null);
-
   const [method, setMethod] = useState("Recycle");
   const [reason, setReason] = useState("");
 
@@ -74,7 +73,6 @@ function RecycleAsset() {
       );
 
       alert("Asset Recycled Successfully");
-
       navigate("/asset-management");
 
     } catch (error) {
@@ -95,52 +93,56 @@ function RecycleAsset() {
         <div className="recycle-box">
 
           <h2>♻ Recycle Asset</h2>
-
-          {asset && (
+                    {asset && (
             <>
-                          <p>
+              <p>
                 Are you sure you want to recycle
                 <strong> {asset.asset_name}</strong>?
               </p>
 
               <div className="asset-details">
 
-                <p>
-                  <strong>Asset ID :</strong> {asset.asset_id}
-                </p>
+                <div className="detail-row">
+                  <span className="label">Asset ID</span>
+                  <span className="colon">:</span>
+                  <span className="value">{asset.asset_id}</span>
+                </div>
 
-                <p>
-                  <strong>Category :</strong> {asset.category_name}
-                </p>
+                <div className="detail-row">
+                  <span className="label">Category</span>
+                  <span className="colon">:</span>
+                  <span className="value">{asset.category_name}</span>
+                </div>
 
-                <p>
-                  <strong>Location :</strong> {asset.location}
-                </p>
+                <div className="detail-row">
+                  <span className="label">Location</span>
+                  <span className="colon">:</span>
+                  <span className="value">{asset.location}</span>
+                </div>
 
-                <p>
-                  <strong>Status :</strong> {asset.status}
-                </p>
+                <div className="detail-row">
+                  <span className="label">Status</span>
+                  <span className="colon">:</span>
+                  <span className="value">{asset.status}</span>
+                </div>
 
               </div>
 
               <div className="form-group">
 
-                    <label>Method</label>
+                <label>Method</label>
 
-                    <select
-                        name="method"
-                        defaultValue=""
-                        required
-                    >
-                        <option value="" disabled>
-                            Select Method
-                        </option>
-                        <option value="Recycle">
-                            Recycle
-                        </option>
-                    </select>
+                <select
+                  value={method}
+                  onChange={(e) => setMethod(e.target.value)}
+                >
+                  <option value="Recycle">Recycle</option>
+                  <option value="Reuse">Reuse</option>
+                  <option value="Scrap">Scrap</option>
+                </select>
 
-                </div>
+              </div>
+
               <div className="form-group">
 
                 <label>Reason</label>
@@ -178,8 +180,10 @@ function RecycleAsset() {
         </div>
 
       </div>
-          </>
+
+    </>
   );
+
 }
 
 export default RecycleAsset;

@@ -69,8 +69,7 @@ function Reports() {
     }
 
   };
-
-  const totalAssets = assets.length;
+    const totalAssets = assets.length;
 
   const availableAssets = assets.filter(
     (item) => item.status === "Available"
@@ -81,189 +80,182 @@ function Reports() {
   ).length;
 
   const maintenanceAssets = maintenance.length;
+
   const downloadReport = () => {
 
-  const doc = new jsPDF();
+    const doc = new jsPDF();
 
-  doc.setFontSize(18);
-  doc.text("Smart Inventory Tracking System", 14, 15);
+    doc.setFontSize(18);
+    doc.text("Smart Inventory Tracking System", 14, 15);
 
-  doc.setFontSize(13);
-  doc.text("Inventory Report", 14, 25);
+    doc.setFontSize(13);
+    doc.text("Inventory Report", 14, 25);
 
-  doc.setFontSize(11);
+    doc.setFontSize(11);
 
-  doc.text(`Total Assets : ${totalAssets}`, 14, 35);
-  doc.text(`Available Assets : ${availableAssets}`, 14, 42);
-  doc.text(`Assigned Assets : ${assignedAssets}`, 14, 49);
-  doc.text(`Maintenance Assets : ${maintenanceAssets}`, 14, 56);
+    doc.text(`Total Assets : ${totalAssets}`, 14, 35);
+    doc.text(`Available Assets : ${availableAssets}`, 14, 42);
+    doc.text(`Assigned Assets : ${assignedAssets}`, 14, 49);
+    doc.text(`Maintenance Assets : ${maintenanceAssets}`, 14, 56);
 
-  // ==========================
-  // Asset Summary
-  // ==========================
+    // ==========================
+    // Asset Summary
+    // ==========================
 
-  autoTable(doc, {
-    startY: 65,
-    head: [[
-      "Asset ID",
-      "Asset Name",
-      "Category",
-      "Brand",
-      "Location",
-      "Status"
-    ]],
-    body: assets.map((item) => [
-      item.asset_id,
-      item.asset_name,
-      item.category_name,
-      item.brand,
-      item.location,
-      item.status
-    ]),
-    theme: "grid"
-  });
+    autoTable(doc, {
+      startY: 65,
+      head: [[
+        "Asset ID",
+        "Asset Name",
+        "Category",
+        "Brand",
+        "Location",
+        "Status"
+      ]],
+      body: assets.map((item) => [
+        item.asset_id,
+        item.asset_name,
+        item.category_name,
+        item.brand,
+        item.location,
+        item.status
+      ]),
+      theme: "grid"
+    });
 
-  // ==========================
-  // Maintenance Summary
-  // ==========================
+    // ==========================
+    // Maintenance Summary
+    // ==========================
 
-  autoTable(doc, {
-    startY: doc.lastAutoTable.finalY + 15,
-    head: [[
-      "Asset ID",
-      "Asset Name",
-      "Employee ID",
-      "Employee Name",
-      "Issue",
-      "Status"
-    ]],
-    body: maintenance.map((item) => [
-      item.asset_id,
-      item.asset_name,
-      item.employee_id,
-      item.employee_name,
-      item.issue,
-      item.status
-    ]),
-    theme: "grid"
-  });
+    autoTable(doc, {
+      startY: doc.lastAutoTable.finalY + 15,
+      head: [[
+        "Asset ID",
+        "Asset Name",
+        "Category",
+        "Employee ID",
+        "Employee Name",
+        "Issue",
+        "Status"
+      ]],
+      body: maintenance.map((item) => [
+        item.asset_id,
+        item.asset_name,
+        item.category_name,
+        item.employee_id,
+        item.employee_name,
+        item.issue,
+        item.status
+      ]),
+      theme: "grid"
+    });
+        // ==========================
+    // Recycling Summary
+    // ==========================
 
-  // ==========================
-  // Recycling Summary
-  // ==========================
+    autoTable(doc, {
+      startY: doc.lastAutoTable.finalY + 15,
+      head: [[
+        "Asset ID",
+        "Asset Name",
+        "Category",
+        "Method",
+        "Reason",
+        "Recycled By"
+      ]],
+      body: recycling.map((item) => [
+        item.asset_id,
+        item.asset_name,
+        item.category_name,
+        item.method,
+        item.reason,
+        item.recycled_by
+      ]),
+      theme: "grid"
+    });
 
-  autoTable(doc, {
-    startY: doc.lastAutoTable.finalY + 15,
-    head: [[
-      "Asset ID",
-      "Asset Name",
-      "Category",
-      "Method",
-      "Reason",
-      "Recycled By"
-    ]],
-    body: recycling.map((item) => [
-      item.asset_id,
-      item.asset_name,
-      item.category_name,
-      item.method,
-      item.reason,
-      item.recycled_by
-    ]),
-    theme: "grid"
-  });
+    // ==========================
+    // Warranty Summary
+    // ==========================
 
-  // ==========================
-  // Warranty Summary
-  // ==========================
+    autoTable(doc, {
+      startY: doc.lastAutoTable.finalY + 15,
+      head: [[
+        "Asset ID",
+        "Asset Name",
+        "Category",
+        "Warranty Expiry"
+      ]],
+      body: warranty.map((item) => [
+        item.asset_id,
+        item.asset_name,
+        item.category_name,
+        item.warranty_expiry
+      ]),
+      theme: "grid"
+    });
 
-  autoTable(doc, {
-    startY: doc.lastAutoTable.finalY + 15,
-    head: [[
-      "Asset ID",
-      "Asset Name",
-      "Category",
-      "Warranty Expiry"
-    ]],
-    body: warranty.map((item) => [
-      item.asset_id,
-      item.asset_name,
-      item.category_name,
-      item.warranty_expiry
-    ]),
-    theme: "grid"
-  });
+    doc.save("Inventory_Report.pdf");
 
-  doc.save("Inventory_Report.pdf");
+  };
 
-};
-return (
+  return (
 
-  <>
+    <>
 
-    <AdminNavbar />
+      <AdminNavbar />
 
-    <div className="reports-page">
+      <div className="reports-page">
 
-      <div className="reports-header">
+        <div className="reports-header">
 
-        <div>
+          <div>
 
-          <h1>Reports</h1>
+            <h1>Reports</h1>
 
-          <p>Inventory & Maintenance Reports</p>
+            <p>Inventory & Maintenance Reports</p>
 
-        </div>
+          </div>
 
-        <button
-          className="download-btn"
-          onClick={downloadReport}
-        >
-          Download PDF
-        </button>
-
-      </div>
-
-      {/* Summary Cards */}
-
-      <div className="report-cards">
-
-        <div className="report-card">
-
-          <h2>{totalAssets}</h2>
-
-          <p>Total Assets</p>
+          <button
+            className="download-btn"
+            onClick={downloadReport}
+          >
+            Download PDF
+          </button>
 
         </div>
 
-        <div className="report-card">
+        {/* Summary Cards */}
 
-          <h2>{availableAssets}</h2>
+        <div className="report-cards">
 
-          <p>Available Assets</p>
+          <div className="report-card">
+            <h2>{totalAssets}</h2>
+            <p>Total Assets</p>
+          </div>
+
+          <div className="report-card">
+            <h2>{availableAssets}</h2>
+            <p>Available Assets</p>
+          </div>
+
+          <div className="report-card">
+            <h2>{assignedAssets}</h2>
+            <p>Assigned Assets</p>
+          </div>
+
+          <div className="report-card">
+            <h2>{maintenanceAssets}</h2>
+            <p>Maintenance Assets</p>
+          </div>
 
         </div>
+                {/* ==========================
+            Asset Summary
+        ========================== */}
 
-        <div className="report-card">
-
-          <h2>{assignedAssets}</h2>
-
-          <p>Assigned Assets</p>
-
-        </div>
-
-        <div className="report-card">
-
-          <h2>{maintenanceAssets}</h2>
-
-          <p>Maintenance Assets</p>
-
-        </div>
-
-      </div>
-              {/* Asset Summary */}
-
-        <div className="report-table">
+        <div className="report-section">
 
           <h2>Asset Summary</h2>
 
@@ -288,7 +280,7 @@ return (
 
                 assets.map((item) => (
 
-                  <tr key={item.id}>
+                  <tr key={item.asset_id}>
 
                     <td>{item.asset_id}</td>
                     <td>{item.asset_name}</td>
@@ -305,14 +297,8 @@ return (
 
                 <tr>
 
-                  <td
-                    colSpan="6"
-                    style={{
-                      textAlign: "center",
-                      padding: "20px"
-                    }}
-                  >
-                    No Assets Found
+                  <td colSpan="6">
+                    No Asset Records Found
                   </td>
 
                 </tr>
@@ -324,9 +310,11 @@ return (
           </table>
 
         </div>
-                {/* Maintenance Summary */}
+                {/* ==========================
+            Maintenance Summary
+        ========================== */}
 
-        <div className="report-table">
+        <div className="report-section">
 
           <h2>Maintenance Summary</h2>
 
@@ -337,6 +325,7 @@ return (
               <tr>
                 <th>Asset ID</th>
                 <th>Asset Name</th>
+                <th>Category</th>
                 <th>Employee ID</th>
                 <th>Employee Name</th>
                 <th>Issue</th>
@@ -355,6 +344,7 @@ return (
 
                     <td>{item.asset_id}</td>
                     <td>{item.asset_name}</td>
+                    <td>{item.category_name}</td>
                     <td>{item.employee_id}</td>
                     <td>{item.employee_name}</td>
                     <td>{item.issue}</td>
@@ -368,14 +358,8 @@ return (
 
                 <tr>
 
-                  <td
-                    colSpan="6"
-                    style={{
-                      textAlign: "center",
-                      padding: "20px"
-                    }}
-                  >
-                    No Maintenance Records
+                  <td colSpan="7">
+                    No Maintenance Records Found
                   </td>
 
                 </tr>
@@ -387,9 +371,11 @@ return (
           </table>
 
         </div>
-                {/* Recycling Summary */}
+                {/* ==========================
+            Recycling Summary
+        ========================== */}
 
-        <div className="report-table">
+        <div className="report-section">
 
           <h2>Recycling Summary</h2>
 
@@ -431,14 +417,8 @@ return (
 
                 <tr>
 
-                  <td
-                    colSpan="6"
-                    style={{
-                      textAlign: "center",
-                      padding: "20px"
-                    }}
-                  >
-                    No Recycling Records
+                  <td colSpan="6">
+                    No Recycling Records Found
                   </td>
 
                 </tr>
@@ -450,9 +430,11 @@ return (
           </table>
 
         </div>
-                {/* Warranty Summary */}
+                {/* ==========================
+            Warranty Summary
+        ========================== */}
 
-        <div className="report-table">
+        <div className="report-section">
 
           <h2>Warranty Summary</h2>
 
@@ -475,7 +457,7 @@ return (
 
                 warranty.map((item) => (
 
-                  <tr key={item.id}>
+                  <tr key={item.asset_id}>
 
                     <td>{item.asset_id}</td>
                     <td>{item.asset_name}</td>
@@ -490,14 +472,8 @@ return (
 
                 <tr>
 
-                  <td
-                    colSpan="4"
-                    style={{
-                      textAlign: "center",
-                      padding: "20px"
-                    }}
-                  >
-                    No Warranty Records
+                  <td colSpan="4">
+                    No Warranty Records Found
                   </td>
 
                 </tr>
