@@ -204,31 +204,30 @@ tbody tr:hover{
 }
 
 /* ================= Status ================= */
-
 .available,
 .assigned,
 .maintenance{
     display:inline-block;
-    min-width:110px;
-    padding:8px 18px;
-    border-radius:25px;
-    color:#fff;
-    text-align:center;
-    font-size:14px;
+    background:none;
+    padding:0;
+    border-radius:0;
+    min-width:auto;
+    font-size:15px;
     font-weight:600;
 }
 
 .available{
-    background:#10b981;
+    color:#16a34a;
 }
 
 .assigned{
-    background:#2563eb;
+    color:#2563eb;
 }
 
 .maintenance{
-    background:#f59e0b;
+    color:#d97706;
 }
+
 /* ================= Animation ================= */
 
 .card,

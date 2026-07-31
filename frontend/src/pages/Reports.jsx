@@ -46,10 +46,24 @@ function Reports() {
       ]);
 
       setAssets(assetResponse.data);
-      setMaintenance(maintenanceResponse.data);
-      setRecycling(recyclingResponse.data);
 
-      const today = new Date();
+    const sortedMaintenance = [...maintenanceResponse.data].sort((a, b) => {
+
+      const order = {
+        "Completed": 1,
+        "In Progress": 2,
+        "Pending": 3,
+      };
+
+      return order[a.status] - order[b.status];
+
+    });
+
+    setMaintenance(sortedMaintenance);
+
+    setRecycling(recyclingResponse.data);
+
+    const today = new Date();
 
       const warrantyData = assetResponse.data.filter((item) => {
 
@@ -79,9 +93,11 @@ function Reports() {
     (item) => item.status === "Assigned"
   ).length;
 
-  const maintenanceAssets = maintenance.length;
+  const maintenanceAssets = maintenance.filter(
+  (item) => item.status !== "Completed"
+ ).length;
 
-  const downloadReport = () => {
+ const downloadReport = () => {
 
     const doc = new jsPDF();
 

@@ -68,7 +68,7 @@ function MyProfile() {
           <div className="detail-box">
             <h4>Status</h4>
 
-            <p className="status">
+            <p className="profile-status">
               Active
             </p>
 

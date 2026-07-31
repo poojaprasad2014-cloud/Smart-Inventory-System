@@ -1,6 +1,8 @@
 import { Routes, Route } from "react-router-dom";
 
 import Landing from "./pages/Landing";
+
+import EmployeeLanding from "./pages/employee/EmployeeLanding";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 
@@ -42,6 +44,8 @@ import MyComplaints from "./pages/employee/MyComplaints";
 import MyProfile from "./pages/employee/MyProfile";
 
 import WarrantyAlert from "./pages/WarrantyAlert";
+
+
 
 function App() {
   return (
@@ -107,6 +111,10 @@ function App() {
       <Route path="/my-profile" element={<MyProfile />} />
 
       <Route path="/warranty-alert" element={<WarrantyAlert />} />
+
+
+
+      <Route path="/employee-home" element={<EmployeeLanding />} />
 
      
 

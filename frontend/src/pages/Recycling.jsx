@@ -32,22 +32,39 @@ function Recycling() {
 
     };
 
+    // const filteredRecycling = recycling.filter((item) => {
+
+    //     const keyword = search.toLowerCase();
+
+    //     return (
+
+    //             (item.asset_id || "").toLowerCase().includes(keyword) ||
+    //             (item.asset_name || "").toLowerCase().includes(keyword) ||
+    //             (item.category_name || "").toLowerCase().includes(keyword) ||
+    //             (item.method || "").toLowerCase().includes(keyword) ||
+    //             (item.reason || "").toLowerCase().includes(keyword) ||
+    //             (item.recycled_by || "").toLowerCase().includes(keyword)
+
+    //     );
+
+    // });
     const filteredRecycling = recycling.filter((item) => {
 
-        const keyword = search.toLowerCase();
+    const keyword = search.trim().toLowerCase();
 
-        return (
+    if (keyword === "") return true;
 
-                (item.asset_id || "").toLowerCase().includes(keyword) ||
-                (item.asset_name || "").toLowerCase().includes(keyword) ||
-                (item.category_name || "").toLowerCase().includes(keyword) ||
-                (item.method || "").toLowerCase().includes(keyword) 
-                
+    return (
+        String(item.asset_id || "").toLowerCase().startsWith(keyword) ||
+        String(item.asset_name || "").toLowerCase().startsWith(keyword) ||
+        String(item.category_name || "").toLowerCase().startsWith(keyword) ||
+        String(item.recycle_date || "").toLowerCase().startsWith(keyword) ||
+        String(item.reason || "").toLowerCase().startsWith(keyword)
+    );
 
-        );
+});
 
-    });
-        return (
+     return (
         <>
             <AdminNavbar />
 

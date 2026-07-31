@@ -1,0 +1,101 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+.add-asset-page{
+    max-width:760px;
+    width:95%;
+    margin:40px auto;
+    background:#fff;
+    padding:40px;
+    border-radius:16px;
+    box-shadow:0 8px 20px rgba(0,0,0,.1);
+}
+
+.add-asset-page h1{
+    text-align:center;
+    color:#2563eb;
+    font-size:36px;
+    font-weight:700;
+    margin-bottom:30px;
+}
+
+.add-asset-page form{
+    display:flex;
+    flex-direction:column;
+}
+
+.add-asset-page label{
+    margin-top:10px;
+    margin-bottom:6px;
+    color:#6b7280;
+    font-size:16px;
+    font-weight:600;
+}
+
+.add-asset-page input,
+.add-asset-page select{
+    width:100%;
+    height:56px;
+    padding:0 18px;
+    border:1px solid #d1d5db;
+    border-radius:10px;
+    outline:none;
+    background:#fff;
+    color:#111827;
+    font-size:16px;
+    margin-bottom:10px;
+    transition:0.3s;
+}
+
+.add-asset-page input::placeholder{
+    color:#9ca3af;
+}
+
+.add-asset-page select:invalid{
+    color:#9ca3af;
+}
+
+.add-asset-page option{
+    color:#111827;
+}
+
+.add-asset-page input:focus,
+.add-asset-page select:focus{
+    border-color:#2563eb;
+    box-shadow:0 0 0 3px rgba(37,99,235,.15);
+}
+
+.add-asset-page button{
+    width:100%;
+    height:56px;
+    margin-top:18px;
+    background:#2563eb;
+    color:#fff;
+    border:none;
+    border-radius:10px;
+    font-size:18px;
+    font-weight:600;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.add-asset-page button:hover{
+    background:#1d4ed8;
+}
+
+@media (max-width:768px){
+
+    .add-asset-page{
+        width:95%;
+        padding:25px;
+    }
+
+    .add-asset-page h1{
+        font-size:30px;
+    }
+
+}

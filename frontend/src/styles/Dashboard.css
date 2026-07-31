@@ -98,20 +98,6 @@ body{
     background:linear-gradient(90deg,#2563eb,#3b82f6);
 }
 
-/* .card-icon{
-    width:60px;
-    height:60px;
-    margin:0 auto 20px;
-    border-radius:50%;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    color:#ffffff;
-    font-size:32px;
-    transition:.3s;
-} */
-
-
 .card-icon{
     font-size:32px;
     color:#fff;
@@ -129,9 +115,6 @@ body{
     justify-content:center;
     align-items:center;
 }
-
-
-
 
 .card:hover .card-icon{
     transform:scale(1.08);
@@ -200,7 +183,6 @@ body{
     font-size:24px;
     color:#2563eb;
 }
-
 /* ===========================
    Recharts
 =========================== */
@@ -220,6 +202,7 @@ body{
 .recharts-surface{
     outline:none;
 }
+
 /* ===========================
    Table Section
 =========================== */
@@ -244,7 +227,6 @@ body{
     font-weight:700;
     color:#1e40af;
     margin-bottom:20px;
-    line-height:1.2;
 }
 
 .dashboard-table{
@@ -288,63 +270,64 @@ body{
 }
 
 /* ===========================
-   Status Badges
+   Asset Status
 =========================== */
 
 .status{
-    display:inline-block;
-    padding:8px 18px;
-    border-radius:25px;
+    display:inline-flex;
+    align-items:center;
     font-size:14px;
     font-weight:600;
-    min-width:110px;
-    text-align:center;
+    padding:0 !important;
+    background:none !important;
+    border:none !important;
+    border-radius:0 !important;
+    box-shadow:none !important;
 }
 
-
 .status.available{
-    background:#10b981 !important;
-    color:#fff;
+    color:#16A34A !important;
 }
 
 .status.assigned{
-    background:#2563eb !important;
-    color:#fff;
+    color:#2563EB !important;
 }
 
 .status.maintenance{
-    background:#f59e0b !important;
-    color:#fff;
+    color:#D97706 !important;
 }
 
 .status.recycled{
-    background:#ef4444 !important;
-    color:#fff;
+    color:#DC2626 !important;
 }
+
 
 /* ===========================
-   Warranty Badges
+   Warranty Status
 =========================== */
 
-.warning-badge{
-    display:inline-block;
-    background:#f59e0b;
-    color:#ffffff;
-    padding:8px 16px;
-    border-radius:25px;
+.safe-badge,
+.warning-badge,
+.danger-badge,
+.expired-badge{
     font-size:14px;
+    font-weight:600;
+    background:none;
+    border:none;
+    padding:0;
+}
+
+
+.warranty-soon{
+    color:#D97706;
     font-weight:600;
 }
 
-.danger-badge{
-    display:inline-block;
-    background:#ef4444;
-    color:#ffffff;
-    padding:8px 16px;
-    border-radius:25px;
-    font-size:14px;
+.warranty-critical{
+    color:#DC2626;
     font-weight:600;
 }
+
 
 /* ===========================
    Table Scroll
@@ -514,11 +497,11 @@ body{
     }
 
     .dashboard-header h1{
-        font-size:32px;
+        font-size:28px;
     }
 
     .dashboard-header p{
-        font-size:16px;
+        font-size:15px;
     }
 
     .cards{
@@ -555,11 +538,11 @@ body{
     }
 
     .dashboard-header h1{
-        font-size:28px;
+        font-size:24px;
     }
 
     .dashboard-header p{
-        font-size:15px;
+        font-size:14px;
     }
 
     .table-card,
@@ -572,6 +555,17 @@ body{
     .dashboard-table td{
         padding:12px;
         font-size:14px;
+    }
+
+    .status{
+        font-size:12px;
+    }
+
+    .safe-badge,
+    .warning-badge,
+    .danger-badge,
+    .expired-badge{
+        font-size:12px;
     }
 
 }

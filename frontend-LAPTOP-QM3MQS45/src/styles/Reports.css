@@ -1,0 +1,148 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+.reports-page{
+    padding:30px;
+    background:#f5f7fb;
+    min-height:100vh;
+}
+
+.reports-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:20px;
+}
+
+.reports-header h1{
+    margin:0;
+    color:#1e40af;
+    font-size:32px;
+    font-weight:700;
+    line-height:1.2;
+}
+
+
+.reports-header p{
+    margin-top:2px;
+    margin-bottom:0;
+    color:#64748b;
+    font-size:16px;
+    font-weight:400;
+    line-height:1.3;
+}
+
+.reports-header button{
+    background:#2563eb;
+    color:white;
+    border:none;
+    padding:12px 22px;
+    border-radius:8px;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.reports-header button:hover{
+    background:#1d4ed8;
+}
+
+.report-cards{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:20px;
+    margin-bottom:30px;
+    margin-top:20px;
+}
+
+.report-card{
+    background:white;
+    border-radius:15px;
+    padding:25px;
+    text-align:center;
+    box-shadow:0 8px 20px rgba(0,0,0,.08);
+    transition:.3s;
+}
+
+.report-card:hover{
+    transform:translateY(-5px);
+}
+
+.report-card h2{
+    color:#2563eb;
+    font-size:30px;
+    font-weight:700;
+    margin-bottom:20px;
+}
+
+.report-card p{
+    color:#6b7280;
+    font-size:15px;
+}
+
+.report-table{
+    background:white;
+    border-radius:15px;
+    padding:20px;
+    box-shadow:0 8px 20px rgba(0,0,0,.08);
+    overflow-x:auto;
+    margin-top:30px;
+    margin-bottom:30px;
+}
+
+.report-table h2{
+    margin-bottom:20px;
+    color:#1e40af;
+    font-size:32px;
+    font-weight:700;
+    line-height:1.2;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+thead{
+    background:#2563eb;
+    color:white;
+}
+
+th,
+td{
+    padding:15px;
+    text-align:left;
+}
+
+tbody tr{
+    border-bottom:1px solid #e5e7eb;
+}
+
+tbody tr:hover{
+    background:#f8fafc;
+}
+
+@media(max-width:992px){
+
+.report-cards{
+    grid-template-columns:repeat(2,1fr);
+}
+
+}
+
+@media(max-width:768px){
+
+.reports-header{
+    flex-direction:column;
+    align-items:flex-start;
+    gap:15px;
+}
+
+.report-cards{
+    grid-template-columns:1fr;
+}
+
+}

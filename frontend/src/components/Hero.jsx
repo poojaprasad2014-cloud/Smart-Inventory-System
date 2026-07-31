@@ -48,10 +48,11 @@ function Hero() {
 
   return(
 
-<section className="hero">
+//  <section className="hero"> 
+
+<section id="home" className="hero"> 
 
 <div className="hero-content">
-
 <h1>
 Manage Your
 <br/>
@@ -167,18 +168,19 @@ Login
             :
           </span>
 
-          <span
-            className={
-              item.status === "Completed"
-                ? "completed"
-                : item.status === "In Progress"
-                ? "progress"
-                : "pending"
-            }
-          >
-            {item.status}
-          </span>
-
+          <span className="value">
+        <span
+          className={
+            item.status === "Completed"
+              ? "completed"
+              : item.status === "In Progress"
+              ? "progress"
+              : "pending"
+          }
+        >
+          {item.status}
+        </span>
+      </span>
         </div>
 
       </div>

@@ -246,8 +246,7 @@ function EmployeeDashboard() {
 
                         <td>{item.issue}</td>
 
-                        <td>{item.complaint_date}</td>
-
+                        <td>{item.reported_date}</td>
                         <td>
 
                           <span

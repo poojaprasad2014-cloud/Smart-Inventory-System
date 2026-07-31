@@ -7,7 +7,7 @@ function EmployeeNavbar() {
 
   const handleLogout = () => {
     localStorage.removeItem("employee");
-    navigate("/");
+    navigate("/employee-home");
   };
 
   return (

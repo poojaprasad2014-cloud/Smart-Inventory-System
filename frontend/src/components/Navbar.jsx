@@ -2,6 +2,27 @@ import { Link } from "react-router-dom";
 import "../styles/Navbar.css";
 
 function Navbar() {
+
+  const scrollToSection = (id) => (e) => {
+    e.preventDefault();
+
+    const element = document.getElementById(id);
+
+    if (element) {
+      const navbarHeight = 80;
+
+      const y =
+        element.getBoundingClientRect().top +
+        window.pageYOffset -
+        navbarHeight;
+
+      window.scrollTo({
+        top: y,
+        behavior: "smooth",
+      });
+    }
+  };
+
   return (
     <header className="navbar">
 
@@ -10,27 +31,33 @@ function Navbar() {
       </div>
 
       <nav>
-
         <ul className="nav-links">
 
           <li>
-            <a href="#">Home</a>
+            <a href="#home" onClick={scrollToSection("home")}>
+              Home
+            </a>
           </li>
 
           <li>
-            <a href="#features">Features</a>
+            <a href="#features" onClick={scrollToSection("features")}>
+              Features
+            </a>
           </li>
 
           <li>
-            <a href="#about">About</a>
+            <a href="#about" onClick={scrollToSection("about")}>
+              About
+            </a>
           </li>
 
           <li>
-            <a href="#contact">Contact</a>
+            <a href="#contact" onClick={scrollToSection("contact")}>
+              Contact
+            </a>
           </li>
 
         </ul>
-
       </nav>
 
       <div className="nav-btn">

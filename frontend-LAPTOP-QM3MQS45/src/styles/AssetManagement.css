@@ -1,0 +1,278 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+.asset-page{
+    padding:40px;
+    background:#f5f7fb;
+    min-height:100vh;
+}
+
+.asset-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    margin-bottom:20px;
+}
+
+.asset-header h1{
+    margin:0;
+    color:#1e40af;
+    font-size:32px;
+    font-weight:700;
+    line-height:1.2;
+}
+
+.asset-header p{
+    margin-top:2px;
+    margin-bottom:0;
+    color:#64748b;
+    font-size:16px;
+    font-weight:400;
+    line-height:1.3;
+}
+
+/* ================= Add Button ================= */
+
+.asset-add-btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    min-width:170px;
+    height:46px;
+    padding:0 20px;
+    background:#2563eb;
+    color:#fff;
+    text-decoration:none;
+    border-radius:8px;
+    font-size:15px;
+    font-weight:600;
+    transition:.3s;
+}
+
+.asset-add-btn:hover{
+    background:#1d4ed8;
+}
+
+.asset-add-btn:hover{
+    background:#1d4ed8;
+}
+
+.asset-add-btn:hover{
+    background:#1d4ed8;
+}
+.asset-add-btn:hover{
+    background:#1d4ed8;
+}
+
+/* ================= Search ================= */
+
+.search-area{
+    margin-bottom:25px;
+}
+
+.search-area input{
+    width:320px;
+    max-width:100%;
+    padding:12px 15px;
+    border:1px solid #d1d5db;
+    border-radius:8px;
+    outline:none;
+    background:#fff;
+    color:#374151;
+    font-size:15px;
+}
+
+.search-area input::placeholder{
+    color:#6b7280;
+}
+
+.search-area input:focus{
+    border-color:#2563eb;
+}
+
+/* ================= Table ================= */
+
+.asset-table{
+    background:#fff;
+    padding:25px;
+    border-radius:15px;
+    box-shadow:0 8px 20px rgba(0,0,0,.08);
+    overflow-x:auto;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+thead{
+    background:#2563eb;
+}
+
+thead th{
+    color:#fff;
+    padding:16px;
+    text-align:left;
+    font-size:16px;
+    font-weight:600;
+}
+
+tbody td{
+    padding:16px;
+    color:#374151;
+    border-bottom:1px solid #e5e7eb;
+}
+
+tbody tr:hover{
+    background:#f8fafc;
+}
+
+/* ================= Status ================= */
+
+.available,
+.assigned,
+.maintenance,
+.recycled{
+    display:inline-block;
+    color:#fff;
+    padding:7px 16px;
+    border-radius:20px;
+    font-size:13px;
+    font-weight:600;
+}
+
+.available{
+    background:#10b981;
+}
+
+.assigned{
+    background:#2563eb;
+}
+
+.maintenance{
+    background:#f59e0b;
+}
+
+.recycled{
+    background:#ef4444;
+}
+
+/* ================= Edit Button ================= */
+
+.edit-btn{
+    display:inline-block;
+    background:#16a34a;
+    color:#fff;
+    text-decoration:none;
+    padding:8px 16px;
+    border-radius:6px;
+    margin-right:8px;
+    transition:.3s;
+}
+
+.edit-btn:hover{
+    background:#15803d;
+}
+
+/* ================= Delete Button ================= */
+
+.delete-btn{
+    display:inline-block;
+    background:#dc2626;
+    color:#fff;
+    text-decoration:none;
+    padding:8px 16px;
+    border-radius:6px;
+    margin-right:8px;
+    transition:.3s;
+    cursor:pointer;
+}
+
+.delete-btn:hover{
+    background:#b91c1c;
+}
+
+/* ================= Recycle Button ================= */
+
+.recycle-btn{
+    display:inline-block;
+    background:#f59e0b;
+    color:#fff;
+    border:none;
+    padding:8px 16px;
+    border-radius:6px;
+    cursor:pointer;
+    font-size:14px;
+    font-weight:600;
+    transition:.3s;
+    text-decoration:none;
+}
+
+.recycle-btn:hover{
+    background:#d97706;
+}
+
+/* Disabled Buttons */
+
+.edit-btn:disabled,
+.recycle-btn:disabled{
+    background:#9ca3af;
+    cursor:not-allowed;
+}
+
+/* ================= Responsive ================= */
+
+@media (max-width:768px){
+
+    .asset-page{
+        padding:30px;
+    }
+
+    .asset-header{
+        flex-direction:column;
+        align-items:flex-start;
+        gap:20px;
+    }
+
+    .asset-header h1{
+        font-size:30px;
+    }
+
+    .asset-header p{
+        font-size:15px;
+    }
+
+    .add-btn{
+        padding:12px 20px;
+    }
+
+    .search-area input{
+        width:100%;
+    }
+
+    .asset-table{
+        overflow-x:auto;
+    }
+
+    table{
+        min-width:900px;
+    }
+
+    thead th,
+    tbody td{
+        white-space:nowrap;
+    }
+
+    .edit-btn,
+    .delete-btn,
+    .recycle-btn{
+        display:inline-block;
+        margin-bottom:8px;
+        font-size:13px;
+        padding:8px 14px;
+    }
+}

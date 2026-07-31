@@ -132,34 +132,34 @@ tbody tr:hover{
 }
 
 /* ================= Status ================= */
-
-.available,
-.assigned,
-.maintenance,
-.recycled{
-    display:inline-block;
-    color:#fff;
-    padding:7px 16px;
-    border-radius:20px;
-    font-size:13px;
+.asset-available,
+.asset-assigned,
+.asset-maintenance,
+.asset-recycled{
+    background:none;
+    border:none;
+    padding:0;
+    border-radius:0;
+    font-size:16px;
     font-weight:600;
 }
 
-.available{
-    background:#10b981;
+.asset-available{
+    color:#16A34A;
 }
 
-.assigned{
-    background:#2563eb;
+.asset-assigned{
+    color:#2563EB;
 }
 
-.maintenance{
-    background:#f59e0b;
+.asset-maintenance{
+    color:#D97706;
 }
 
-.recycled{
-    background:#ef4444;
+.asset-recycled{
+    color:#DC2626;
 }
+
 
 /* ================= Edit Button ================= */
 

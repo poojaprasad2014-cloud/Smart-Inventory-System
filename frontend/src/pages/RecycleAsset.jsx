@@ -137,8 +137,8 @@ function RecycleAsset() {
                   onChange={(e) => setMethod(e.target.value)}
                 >
                   <option value="Recycle">Recycle</option>
-                  <option value="Reuse">Reuse</option>
-                  <option value="Scrap">Scrap</option>
+                  {/* <option value="Reuse">Reuse</option>
+                  <option value="Scrap">Scrap</option> */}
                 </select>
 
               </div>

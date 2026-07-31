@@ -118,34 +118,30 @@ function WarrantyAlert() {
                                             <td>{item.warranty_expiry}</td>
 
                                             <td>
-
                                                 <span
-                                                    className={
-                                                        item.days_left <= 7
-                                                            ? "critical-days"
-                                                            : "warning-days"
-                                                    }
-                                                >
-                                                    {item.days_left} Days
+                                                        className={
+                                                            item.days_left <= 7
+                                                                    ? "critical-days"
+                                                                    : "warning-days"
+                                                                     }
+                                                                        >
+                                                             {item.days_left} Days
                                                 </span>
-
                                             </td>
 
-                                            <td>
-
-                                                <span
+                                             <td>
+                                                 <span
                                                     className={
                                                         item.days_left <= 7
-                                                            ? "critical-badge"
-                                                            : "warning-badge"
-                                                    }
-                                                >
-                                                    {item.days_left <= 7
-                                                        ? "Critical"
-                                                        : "Expiring Soon"}
-                                                </span>
-
-                                            </td>
+                                                             ? "critical-badge"
+                                                             : "warning-badge"
+                                                                }
+                                                            >
+                                                            {item.days_left <= 7
+                                                                ? "Critical"
+                                                                 : "Expiring Soon"}
+                                                    </span>
+                                            </td>                         
 
                                         </tr>
 

@@ -1,0 +1,252 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+/* ================= Page ================= */
+
+.recycling-page{
+    padding:30px;
+    background:#f4f7fc;
+    min-height:100vh;
+}
+
+.recycling-container{
+    width:100%;
+}
+
+/* ================= Header ================= */
+
+.recycling-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    margin-bottom:20px;
+}
+
+.recycling-header h1{
+    margin:0;
+    color:#1e40af;
+    font-size:32px;
+    font-weight:700;
+}
+
+.recycling-header p{
+    margin-top:3px;
+    color:#64748b;
+    font-size:16px;
+}
+
+/* ================= Table ================= */
+
+.recycling-table{
+    background:#fff;
+    border-radius:14px;
+    overflow-x:auto;
+    box-shadow:0 8px 20px rgba(0,0,0,.08);
+}
+
+.recycling-table table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+.recycling-table th{
+    background:#2563eb;
+    color:#fff;
+    padding:16px;
+    text-align:left;
+    white-space:nowrap;
+    font-size:16px;
+    font-weight:600;
+}
+
+.recycling-table td{
+    padding:16px;
+    border-bottom:1px solid #e5e7eb;
+    vertical-align:middle;
+    color:#374151;
+    font-size:15px;
+}
+
+.recycling-table tr:hover{
+    background:#f8fafc;
+}
+/* ================= Method Badge ================= */
+
+.method{
+    display:inline-block;
+    background:#10b981;
+    color:#fff;
+    padding:8px 14px;
+    border-radius:30px;
+    font-size:14px;
+    font-weight:600;
+    white-space:nowrap;
+    min-width:110px;
+    text-align:center;
+}
+
+/* ================= Reason ================= */
+
+.reason{
+    min-width:220px;
+    color:#374151;
+    line-height:1.5;
+    word-break:break-word;
+}
+
+/* ================= Recycled By ================= */
+
+.recycled-by{
+    white-space:nowrap;
+    font-weight:600;
+    color:#1f2937;
+}
+
+/* ================= Fixed Width ================= */
+
+.asset-id{
+    white-space:nowrap;
+}
+
+.asset-name{
+    min-width:220px;
+}
+
+.recycle-date{
+    white-space:nowrap;
+    min-width:150px;
+}
+
+.method-column{
+    min-width:140px;
+}
+
+.reason-column{
+    min-width:250px;
+}
+
+.recycled-user{
+    min-width:150px;
+}
+
+/* ================= Scrollbar ================= */
+
+.recycling-table::-webkit-scrollbar{
+    height:8px;
+}
+
+.recycling-table::-webkit-scrollbar-track{
+    background:#e5e7eb;
+    border-radius:20px;
+}
+
+.recycling-table::-webkit-scrollbar-thumb{
+    background:#94a3b8;
+    border-radius:20px;
+}
+
+.recycling-table::-webkit-scrollbar-thumb:hover{
+    background:#64748b;
+}
+/* ================= Responsive ================= */
+
+@media(max-width:992px){
+
+    .recycling-page{
+        padding:20px;
+    }
+
+    .recycling-header{
+        flex-direction:column;
+        gap:15px;
+    }
+
+    .recycling-table{
+        overflow-x:auto;
+    }
+
+    .recycling-table table{
+        min-width:1100px;
+    }
+
+}
+
+@media(max-width:768px){
+
+    .recycling-header h1{
+        font-size:26px;
+    }
+
+    .recycling-header p{
+        font-size:14px;
+    }
+
+    .recycling-table th,
+    .recycling-table td{
+        padding:12px;
+        font-size:14px;
+    }
+
+    .method{
+        padding:7px 12px;
+        font-size:13px;
+        min-width:90px;
+    }
+
+}
+
+@media(max-width:480px){
+
+    .recycling-page{
+        padding:15px;
+    }
+
+    .recycling-header h1{
+        font-size:22px;
+    }
+
+    .recycling-header p{
+        font-size:13px;
+    }
+
+    .recycling-table table{
+        min-width:900px;
+    }
+
+    .recycling-table th,
+    .recycling-table td{
+        padding:10px;
+        font-size:13px;
+    }
+
+    .method{
+        font-size:12px;
+        padding:6px 10px;
+        min-width:80px;
+    }
+
+}
+
+/* ================= Animation ================= */
+
+.recycling-table{
+    animation:fadeIn .35s ease-in-out;
+}
+
+@keyframes fadeIn{
+
+    from{
+        opacity:0;
+        transform:translateY(12px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+
+}

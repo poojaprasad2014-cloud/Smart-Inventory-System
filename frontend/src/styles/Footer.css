@@ -1,19 +1,28 @@
 .footer{
     background:#08152d;
-    color:white;
-    padding:70px 8% 20px;
+    color:#fff;
+    padding:40px 8% 15px;
+    margin-top:0;
+
+    scroll-margin-top:80px;
 }
 
+
+
 .footer-container{
+    width:90%;
+    max-width:1300px;
+    margin:0 auto;
     display:grid;
     grid-template-columns:2fr 1fr 1fr 1fr;
     gap:40px;
-    margin-bottom:40px;
 }
 
 .footer-box h2{
     font-size:30px;
-    margin-bottom:20px;
+    font-weight:700;
+    color:#fff;
+    margin-bottom:25px;
 }
 
 .footer-box h2 span{
@@ -22,20 +31,28 @@
 
 .footer-box h3{
     font-size:22px;
-    margin-bottom:20px;
+    font-weight:600;
+    color:#fff;
+    margin-bottom:22px;
 }
 
 .footer-box p{
     color:#cbd5e1;
+    font-size:16px;
     line-height:1.8;
-    margin-bottom:12px;
+    margin-bottom:14px;
+}
+
+.footer-box:first-child p{
+    max-width:360px;
 }
 
 .footer-box a{
     display:block;
     color:#cbd5e1;
     text-decoration:none;
-    margin-bottom:12px;
+    font-size:16px;
+    margin-bottom:14px;
     transition:.3s;
 }
 
@@ -45,37 +62,72 @@
 }
 
 .footer-bottom{
-    border-top:1px solid rgba(255,255,255,.15);
+    border-top:1px solid rgba(255,255,255,.12);
+    margin-top:25px;
     padding-top:20px;
     text-align:center;
 }
 
 .footer-bottom p{
+    margin:0;
     color:#94a3b8;
     font-size:15px;
 }
 
+/* Responsive */
+
 @media(max-width:992px){
 
-.footer-container{
-    grid-template-columns:repeat(2,1fr);
-}
+    .footer-container{
+        grid-template-columns:repeat(2,1fr);
+        gap:35px;
+    }
 
 }
 
 @media(max-width:768px){
 
-.footer{
-    padding:60px 25px 20px;
+    .footer{
+        padding:60px 25px 20px;
+    }
+
+    .footer-container{
+        grid-template-columns:1fr;
+        gap:30px;
+    }
+
+    .footer-box{
+        text-align:center;
+    }
+
+    .footer-box:first-child p{
+        max-width:100%;
+        margin:auto;
+    }
+
 }
 
-.footer-container{
-    grid-template-columns:1fr;
-    gap:30px;
-}
+@media(max-width:480px){
 
-.footer-box{
-    text-align:center;
-}
+    .footer{
+        padding:50px 20px 20px;
+    }
+
+    .footer-box h2{
+        font-size:28px;
+    }
+
+    .footer-box h3{
+        font-size:20px;
+    }
+
+    .footer-box p,
+    .footer-box a{
+        font-size:15px;
+    }
+
+    .footer-bottom p{
+        font-size:14px;
+    }
 
 }

@@ -138,25 +138,23 @@ function AssetManagement() {
                     <td>{item.location}</td>
 
                     <td>
-
-                      <span
-                        className={
-                          item.status === "Available"
-                            ? "available"
-                            : item.status === "Assigned"
-                            ? "assigned"
-                            : item.status === "Maintenance"
-                            ? "maintenance"
-                            : "recycled"
-                        }
-                      >
-                        {item.status}
-                      </span>
-
+                        <span
+                          className={
+                            item.status === "Available"
+                              ? "asset-available"
+                              : item.status === "Assigned"
+                              ? "asset-assigned"
+                              : item.status === "Maintenance"
+                              ? "asset-maintenance"
+                              : "asset-recycled"
+                          }
+                        >
+                          {item.status}
+                        </span>
                     </td>
 
                     <td>
-                                            {item.status === "Recycled" ? (
+                            {item.status === "Recycled" ? (
 
                         <button
                           className="edit-btn"

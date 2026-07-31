@@ -9,10 +9,6 @@
     font-family:"Poppins",sans-serif;
 }
 
-/* ==========================================
-   HERO SECTION
-========================================== */
-
 .hero{
     min-height:100vh;
     background:linear-gradient(135deg,#08142d,#153c86,#2563eb);
@@ -20,8 +16,11 @@
     justify-content:space-between;
     align-items:flex-start;
     gap:60px;
-    padding:120px 7% 40px;
+    padding:120px 7% 60px;
     overflow:hidden;
+    margin:0;
+    border:none;
+    box-shadow:none;
 }
 
 .hero-content{
@@ -66,20 +65,12 @@
     transform:translateY(-3px);
 }
 
-/* ==========================================
-   HERO IMAGE
-========================================== */
-
 .hero-image{
     flex:1;
     display:flex;
     justify-content:center;
     align-items:flex-start;
 }
-
-/* ==========================================
-   DASHBOARD PREVIEW
-========================================== */
 
 .dashboard-preview{
     width:100%;
@@ -89,10 +80,6 @@
     padding:30px;
     box-shadow:0 18px 45px rgba(0,0,0,.25);
 }
-
-/* ==========================================
-   DASHBOARD HEADER
-========================================== */
 
 .dashboard-header{
     display:flex;
@@ -112,10 +99,6 @@
     font-size:16px;
     font-weight:700;
 }
-
-/* ==========================================
-   DASHBOARD CARDS
-========================================== */
 
 .dashboard-grid{
     display:grid;
@@ -174,13 +157,13 @@
 
 .activity-item{
     position:relative;
-    background:#ffffff;
+    background:#fff;
     border:1px solid #e5e7eb;
     border-radius:16px;
     padding:22px 24px 22px 30px;
     margin-bottom:18px;
     box-shadow:0 8px 18px rgba(0,0,0,.08);
-    transition:all .3s ease;
+    transition:.3s;
 }
 
 .activity-item::before{
@@ -189,7 +172,7 @@
     left:0;
     top:18px;
     bottom:18px;
-    width:4px;
+    width:5px;
     background:#2563eb;
     border-radius:0 8px 8px 0;
 }
@@ -202,84 +185,90 @@
 .activity-body{
     display:flex;
     flex-direction:column;
-    gap:14px;
+    gap:16px;
 }
 
 .activity-field{
     display:grid;
     grid-template-columns:160px 20px 1fr;
     align-items:center;
-    margin:10px 0;
+    /* column-gap:10px; */
 }
 
 .label{
     font-size:18px;
     font-weight:700;
-    color:#374151;
+    color:#111827;
 }
 
 .colon{
     text-align:center;
     font-size:18px;
     font-weight:700;
-    color:#374151;
+    color:#111827;
 }
 
 .value{
     font-size:18px;
+    color:#475569;
     font-weight:500;
-    color:#111827;
     word-break:break-word;
 }
 
 /* ==========================================
-   STATUS BADGE
+   STATUS
 ========================================== */
 
 .completed,
 .progress,
 .pending{
-    display:inline-flex;
-    justify-content:center;
-    align-items:center;
-    width:120px;
-    height:36px;
-    border-radius:20px;
-    font-size:14px;
-    font-weight:700;
+    display:inline;
+    background:none;
+    border:none;
+    padding:0;
+    font-size:18px;
+    font-weight:600;
 }
 
+.completed{ color:#16a34a; }
+.progress{ color:#2563eb; }
+.pending{ color:#dc2626; }
+
 .completed{
-    background:#dcfce7;
+    /* background:#dcfce7; */
     color:#15803d;
 }
 
 .progress{
-    background:#dbeafe;
-    color:#2563eb;
-}
+    /* background:#dbeafe;*/
+    color:#2563eb; 
+    font-size:17px;
+} 
 
 .pending{
-    background:#fee2e2;
+    /* background:#fee2e2; */
     color:#dc2626;
 }
-
 /* ==========================================
    RESPONSIVE
 ========================================== */
 
-@media(max-width:1100px){
+@media (max-width:1100px){
 
     .hero{
         flex-direction:column;
         align-items:center;
         text-align:center;
-        padding:50px 6% 30px;
-        gap:40px;
+        padding:90px 6% 40px;
+        gap:50px;
     }
 
     .hero-content{
         padding-top:0;
+    }
+
+    .hero-content p{
+        margin:0 auto 35px;
     }
 
     .dashboard-preview{
@@ -288,14 +277,14 @@
 
 }
 
-@media(max-width:768px){
+@media (max-width:768px){
 
     .hero{
-        padding:40px 20px;
+        padding:90px 20px 40px;
     }
 
     .hero-content h1{
-        font-size:40px;
+        font-size:42px;
     }
 
     .hero-content p{
@@ -310,8 +299,13 @@
         padding:20px;
     }
 
+    .dashboard-header h3{
+        font-size:22px;
+    }
+
     .activity-field{
-        grid-template-columns:100px 15px 1fr;
+        grid-template-columns:110px 15px 1fr;
+        align-items:start;
     }
 
     .label,
@@ -323,17 +317,25 @@
     .completed,
     .progress,
     .pending{
-        width:100px;
-        height:32px;
-        font-size:12px;
+        width:110px;
+        height:34px;
+        font-size:13px;
     }
 
 }
 
-@media(max-width:480px){
+@media (max-width:480px){
+
+    .hero{
+        padding:90px 15px 30px;
+    }
 
     .hero-content h1{
-        font-size:32px;
+        font-size:34px;
+    }
+
+    .hero-content p{
+        font-size:15px;
     }
 
     .dashboard-card{
@@ -341,7 +343,11 @@
     }
 
     .dashboard-card h2{
-        font-size:28px;
+        font-size:30px;
+    }
+
+    .dashboard-card p{
+        font-size:14px;
     }
 
     .activity-item{

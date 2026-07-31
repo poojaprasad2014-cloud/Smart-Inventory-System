@@ -129,38 +129,33 @@
 }
 /* Status Badge */
 
-.pending{
+
+.pending,
+.in-progress,
+.completed{
     display:inline-block;
-    background:#fef3c7;
-    color:#b45309;
-    padding:8px 14px;
-    border-radius:30px;
-    font-size:14px;
+    background:none;
+    border:none;
+    padding:0;
+    border-radius:0;
+    font-size:15px;
     font-weight:600;
     white-space:nowrap;
+}
+
+.pending{
+    color:#b45309;
 }
 
 .in-progress{
-    display:inline-block;
-    background:#dbeafe;
-    color:#1d4ed8;
-    padding:8px 14px;
-    border-radius:30px;
-    font-size:14px;
-    font-weight:600;
-    white-space:nowrap;
+    color:#2563eb;
 }
 
 .completed{
-    display:inline-block;
-    background:#dcfce7;
     color:#15803d;
-    padding:8px 14px;
-    border-radius:30px;
-    font-size:14px;
-    font-weight:600;
-    white-space:nowrap;
 }
+
+ 
 
 /* Action Buttons */
 

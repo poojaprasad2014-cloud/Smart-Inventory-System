@@ -1,0 +1,128 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+/* ================= Navbar ================= */
+
+.navbar{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:80px;
+    padding:0 8%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    background:#0f172a;
+    box-shadow:0 4px 20px rgba(0,0,0,.20);
+    z-index:1000;
+}
+
+/* ================= Logo ================= */
+
+.logo{
+    text-decoration:none;
+    font-size:32px;
+    font-weight:700;
+    color:#ffffff !important;
+    position:relative;
+    z-index:9999;
+}
+
+.logo span{
+    color:#3b82f6 !important;
+}
+
+/* ================= Navigation ================= */
+
+.nav-links{
+    display:flex;
+    align-items:center;
+    gap:40px;
+    list-style:none;
+}
+
+.nav-links li{
+    list-style:none;
+}
+
+.nav-links li a{
+    text-decoration:none;
+    color:#ffffff;
+    font-size:17px;
+    font-weight:500;
+    transition:.3s;
+}
+
+.nav-links li a:hover{
+    color:#60a5fa;
+}
+
+/* ================= Right Side ================= */
+
+.nav-btn{
+    display:flex;
+    align-items:center;
+}
+
+/* ================= Login Button ================= */
+
+.login-btn{
+    text-decoration:none;
+    background:#ffffff;
+    color:#0f172a;
+    border:2px solid #3b82f6;
+    padding:11px 28px;
+    border-radius:10px;
+    font-size:16px;
+    font-weight:600;
+    transition:all .3s ease;
+}
+
+.login-btn:hover{
+    background:#2563eb;
+    color:#ffffff;
+    border-color:#2563eb;
+    transform:translateY(-2px);
+}
+
+/* Active Login Button */
+
+.login-btn.active{
+    background:#1d4ed8;
+    color:#ffffff;
+    border-color:#1d4ed8;
+}
+
+/* Hide Get Started Button */
+
+.start-btn{
+    display:none;
+}
+
+/* ================= Responsive ================= */
+
+@media(max-width:900px){
+
+    .navbar{
+        padding:0 20px;
+    }
+
+    .logo{
+        font-size:26px;
+    }
+
+    .nav-links{
+        display:none;
+    }
+
+    .login-btn{
+        padding:9px 18px;
+        font-size:14px;
+    }
+
+}

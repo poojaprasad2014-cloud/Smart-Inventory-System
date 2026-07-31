@@ -1,0 +1,151 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+.category-page{
+    min-height:100vh;
+    padding:30px 20px;
+    background:#f5f7fb;
+}
+
+.category-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:25px;
+}
+
+.category-header h1{
+    font-size:32px;
+    font-weight:700;
+    color:#1e40af;
+    line-height:1.2;
+}
+
+.category-header p{
+    margin-top:4px;
+    color:#6b7280;
+    font-size:16px;
+}
+
+.category-header button{
+    background:#2563eb;
+    color:#fff;
+    border:none;
+    padding:12px 22px;
+    border-radius:8px;
+    font-size:15px;
+    font-weight:500;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.category-header button:hover{
+    background:#1d4ed8;
+}
+
+.search-box{
+    margin-bottom:25px;
+}
+
+.search-box input{
+    width:320px;
+    height:48px;
+    padding:0 16px;
+    border:1px solid #d1d5db;
+    border-radius:8px;
+    outline:none;
+    background:#fff;
+    color:#111827;
+    font-size:15px;
+    transition:.3s;
+}
+
+.search-box input::placeholder{
+    color:#9ca3af;
+}
+
+.search-box input:focus{
+    border-color:#2563eb;
+    box-shadow:0 0 0 3px rgba(37,99,235,.15);
+}
+
+.category-table{
+    background:#fff;
+    border-radius:12px;
+    overflow:hidden;
+    box-shadow:0 8px 20px rgba(0,0,0,.08);
+}
+
+.category-table table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+.category-table th{
+    background:#2563eb;
+    color:#fff;
+    padding:15px;
+    text-align:left;
+    font-size:15px;
+}
+
+.category-table td{
+    padding:15px;
+    color:#111827;
+    border-bottom:1px solid #e5e7eb;
+}
+
+.category-table tr:hover{
+    background:#f9fafb;
+}
+
+.edit-btn{
+    background:#10b981;
+    color:#fff;
+    border:none;
+    padding:8px 15px;
+    border-radius:6px;
+    cursor:pointer;
+    margin-right:8px;
+    transition:.3s;
+}
+
+.edit-btn:hover{
+    background:#059669;
+}
+
+.delete-btn{
+    background:#ef4444;
+    color:#fff;
+    border:none;
+    padding:8px 15px;
+    border-radius:6px;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.delete-btn:hover{
+    background:#dc2626;
+}
+
+@media(max-width:768px){
+
+    .category-header{
+        flex-direction:column;
+        align-items:flex-start;
+        gap:15px;
+    }
+
+    .search-box input{
+        width:100%;
+    }
+
+    .category-table{
+        overflow-x:auto;
+    }
+
+}

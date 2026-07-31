@@ -1,0 +1,126 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+.complaints-page{
+    min-height:100vh;
+    background:#f1f5f9;
+    padding:35px;
+}
+
+.complaints-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:30px;
+}
+
+.complaints-header h1{
+    color:#1e40af;
+    font-size:32px;
+    line-height:1.2;
+
+}
+
+.complaints-header p{
+    color:#6b7280;
+    font-size:16px;
+    font-weight:400;
+    line-height:1.5;
+}
+
+
+
+
+.back-btn{
+    text-decoration:none;
+    background:#2563eb;
+    color:#fff;
+    padding:10px 22px;
+    border-radius:8px;
+    font-weight:600;
+    transition:.3s;
+}
+
+.back-btn:hover{
+    background:#1d4ed8;
+}
+
+.table-box{
+    background:#fff;
+    padding:25px;
+    border-radius:12px;
+    box-shadow:0 5px 15px rgba(0,0,0,.08);
+    overflow-x:auto;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+table th{
+    background:#2563eb;
+    color:#fff;
+    padding:15px;
+    text-align:left;
+}
+
+table td{
+    padding:15px;
+    border-bottom:1px solid #e2e8f0;
+    color:#334155;
+}
+
+table tr:hover{
+    background:#f8fafc;
+}
+
+/* Status */
+
+.pending{
+    color:#dc2626;
+    font-weight:600;
+}
+
+.in-progress{
+    color:#d97706;
+    font-weight:600;
+}
+
+.completed{
+    color:#16a34a;
+    font-weight:600;
+}
+
+/* Responsive */
+
+@media(max-width:768px){
+
+.complaints-page{
+    padding:20px;
+}
+
+.complaints-header{
+    flex-direction:column;
+    align-items:flex-start;
+    gap:20px;
+}
+
+.complaints-header h1{
+    font-size:26px;
+}
+
+.back-btn{
+    width:100%;
+    text-align:center;
+}
+
+table{
+    min-width:800px;
+}
+
+}

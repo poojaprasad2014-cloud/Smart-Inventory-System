@@ -98,52 +98,50 @@
     background:#f8fafc;
 }
 /* ================= Days Left ================= */
-
-.warning-days{
-    display:inline-block;
-    background:#fef3c7;
-    color:#b45309;
-    padding:8px 14px;
-    border-radius:30px;
-    font-size:14px;
+.warning-days,
+.critical-days{
+    display:inline;
+    background:none;
+    border:none;
+    padding:0;
+    border-radius:0;
+    font-size:15px;
     font-weight:600;
     white-space:nowrap;
+}
+
+.warning-days{
+    color:#6B7280;
 }
 
 .critical-days{
-    display:inline-block;
-    background:#fee2e2;
-    color:#dc2626;
-    padding:8px 14px;
-    border-radius:30px;
-    font-size:14px;
+    color:#DC2626;
+}
+
+
+/* ================= Status Badge ================= */
+.warning-badge,
+.critical-badge{
+    display:inline;
+    background:none;
+    border:none;
+    padding:0;
+    border-radius:0;
+    font-size:15px;
     font-weight:600;
     white-space:nowrap;
 }
 
-/* ================= Status Badge ================= */
-
 .warning-badge{
-    display:inline-block;
-    background:#f59e0b;
-    color:#fff;
-    padding:8px 14px;
-    border-radius:30px;
-    font-size:14px;
-    font-weight:600;
-    white-space:nowrap;
+    color:#D97706;
 }
 
 .critical-badge{
-    display:inline-block;
-    background:#dc2626;
-    color:#fff;
-    padding:8px 14px;
-    border-radius:30px;
-    font-size:14px;
-    font-weight:600;
-    white-space:nowrap;
+    color:#DC2626;
 }
+
+
+
 
 /* ================= No Data ================= */
 
@@ -176,6 +174,7 @@
 }
 
 /* ================= Responsive ================= */
+
 
 @media(max-width:992px){
 
@@ -213,7 +212,7 @@
     .critical-badge,
     .warning-days,
     .critical-days{
-        padding:7px 12px;
+        padding:0;
         font-size:13px;
     }
 
@@ -247,11 +246,12 @@
     .critical-badge,
     .warning-days,
     .critical-days{
-        padding:6px 10px;
+        padding:0;
         font-size:12px;
     }
 
 }
+
 
 /* ================= Animation ================= */
 

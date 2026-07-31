@@ -64,7 +64,6 @@ function Dashboard() {
   const recycledAssets =
     assets.filter((a) => a.status === "Recycled").length;
 
-  // ✅ Only Pending & In Progress are counted as Maintenance
   const maintenanceAssets = maintenance.filter(
     (item) =>
       item.status === "Pending" ||
@@ -132,7 +131,8 @@ function Dashboard() {
           </div>
 
           <div className="cards">
-                        <div className="card">
+
+            <div className="card">
               <FaLaptop className="card-icon blue" />
               <h2>{totalAssets}</h2>
               <p>Total Assets</p>
@@ -157,8 +157,7 @@ function Dashboard() {
             </div>
 
           </div>
-
-          {/* Asset Status Chart */}
+                    {/* Asset Status Chart */}
 
           <div className="chart-grid">
 
@@ -249,7 +248,8 @@ function Dashboard() {
                   ))
 
                 ) : (
-                                    <tr>
+
+                  <tr>
 
                     <td
                       colSpan="4"
@@ -270,13 +270,12 @@ function Dashboard() {
             </table>
 
           </div>
-
-          {/* Warranty Alerts */}
+                    {/* Warranty Alerts */}
 
           <div className="table-card">
 
             <div className="card-title">
-              <h2>Warranty Expiring Soon</h2>
+              <h2>Warranty Alerts</h2>
             </div>
 
             <table className="dashboard-table">
@@ -288,7 +287,7 @@ function Dashboard() {
                   <th>Asset Name</th>
                   <th>Category</th>
                   <th>Warranty Expiry</th>
-                  <th>Days Left</th>
+                  <th>Warranty Status</th>
                 </tr>
 
               </thead>
@@ -316,20 +315,19 @@ function Dashboard() {
 
                         <td>{item.warranty_expiry}</td>
 
-                        <td>
-
-                          <span
-                            className={
-                              daysLeft <= 7
-                                ? "danger-badge"
-                                : "warning-badge"
-                            }
-                          >
-                            {daysLeft} Days
-                          </span>
-
-                        </td>
-
+                          <td>
+                              
+                              {daysLeft <= 7 ? (
+                                <span className="warranty-critical">
+                                  ⚠️ Critical ({daysLeft} Days)
+                                </span>
+                              ) : (
+                                <span className="warranty-soon">
+                                  ⏳ Expiring Soon ({daysLeft} Days)
+                                </span>
+                              )}
+                            </td>
+                                
                       </tr>
 
                     );
@@ -337,7 +335,8 @@ function Dashboard() {
                   })
 
                 ) : (
-                                    <tr>
+
+                  <tr>
 
                     <td
                       colSpan="5"
@@ -406,13 +405,15 @@ function Dashboard() {
             </div>
 
           </div>
-                  </div>
+
+        </div>
 
       </div>
 
     </>
 
   );
+
 }
 
 export default Dashboard;
